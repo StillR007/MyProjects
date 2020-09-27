@@ -1,0 +1,33 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+
+	function crossingPlayer(){
+		if(player == 1)
+			player = 2;
+		else
+			player = 1;
+	}
+
+	function checkTheAnswer(i){
+		if(userAnswer == answer){
+			alert("Поздравляем! Победил игрок " + player);
+			return;
+		} else if(userAnswer > answer){
+			alert("Вы ввели слишком большое число. Ход переходит другому игроку");
+			crossingPlayer(player);
+		} else if(userAnswer < answer){
+			alert("Вы ввели слишком маленькое число. Ход переходит другому игроку");
+			crossingPlayer(player);
+		}
+	}
+
+	var answer = parseInt(Math.random() * 100);
+	var player = 1;
+
+	for(var i = player; userAnswer != "exit" && userAnswer != answer;){
+		var userAnswer = prompt("угадайте число от 0 до 100.\nХод игрока " + player + ". Чтобы выйти, введите exit");
+		parseInt(userAnswer);
+		checkTheAnswer(i);
+	}
+
+</script>
