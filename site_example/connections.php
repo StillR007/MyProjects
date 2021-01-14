@@ -1,0 +1,1 @@
+<?phpdefine('HOST', 'some_host');define('DATABASE', 'some_db');define('USER', 'some_user');define('PASSWORD', 'some_password');

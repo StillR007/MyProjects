@@ -1,0 +1,60 @@
+/* Style the links inside the navigation bar */
+.upper a {
+    float: top;
+    color: black;
+    background-color: white;
+    text-align: center;
+    padding: 20px 28px;
+    text-decoration: none;
+    font-size: 20px;}
+
+.upper a:hover {
+    background-color: papayawhip;
+    color: gray;}
+
+.upper a.active {
+    background-color: papayawhip;
+    color: black;}
+
+
+
+input[type=text] {
+    padding: 1px 20px;
+    margin: 10px 1px;
+    box-sizing: content-box;
+}
+input[type=text]:focus {
+    background-color: lightgray;
+    border-radius: 3px;
+}
+input[type=number] {
+    padding: 1px 20px;
+    margin: 10px 1px;
+    box-sizing: content-box;
+}
+input[type=number]:focus {
+    background-color: lightgray;
+    border-radius: 3px;
+}
+
+
+
+table {
+    border: 1px solid grey;
+}
+/* границы ячеек первого ряда таблицы */
+th {
+    border: 1px solid grey;
+}
+/* границы ячеек тела таблицы */
+td {
+    border: 1px solid grey;
+
+}
+
+#rectangle {
+    width: 220px;
+    height: 120px;
+    background: gray;
+    position: center;
+}
