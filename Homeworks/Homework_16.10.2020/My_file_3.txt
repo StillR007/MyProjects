@@ -1,6 +1,0 @@
-Ivanov 25000
-Smirnov 15000
-Sidorov 42000
-Petrov 18500
-Kutuzov 53000
-Dzerchinsky 17800
