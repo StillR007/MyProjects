@@ -1,6 +1,5 @@
-from bs4 import BeautifulSoup
-import requests
-
+import openpyxl
+import datetime
 import time
 from itertools import permutations, combinations
 
@@ -10,55 +9,47 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
+from selenium.common.exceptions import ElementNotVisibleException
 
-
-all_distance = []
-all_time = []
+all_addresses = []
+all_info = []
 addresses = []
 
 
-def find_proxy():
-    url = "http://foxtools.ru/Proxy"
-    ips = get_proxy_ip(url)
-    proxy = check_proxy(ips)
-    capabilities = webdriver.DesiredCapabilities.CHROME['proxy'] = {
-        "httpProxy": proxy,
-        "ftpProxy": proxy,
-        "sslProxy": proxy,
-        "noProxy": None,
-        "proxyType": "MANUAL",
-        "class": "org.openqa.selenium.Proxy",
-        "autodetect": False
-    }
-    return capabilities
-
-
-def get_proxy_ip(url):
-    page = requests.get(url=url)
-    html = page.content
-    soup = BeautifulSoup(html, 'lxml')
-    # Выделяем нужное значение
-    ip_list = soup.find_all("input", class_="ch")
-    for i in range(0, len(ip_list)):
-        ip_list[i] = ip_list[i]['value']
-    return ip_list
-
-
-def check_proxy(ips):
-    for ip in ips:
-        with webdriver.Chrome() as driver:
-            driver.get("https://google.com/ncr")
-            driver.find_element(By.NAME, "q").send_keys("cheese" + Keys.RETURN)
-            result = WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.CSS_SELECTOR, "h3>div")))
-            if result:
-                return ip
+def write_book():
+    book = openpyxl.Workbook()
+    sheet = book.active
+    pair_addresses = [all_addresses[i:i + 2] for i in range(0, len(all_addresses), 2)]
+    date_name = str(datetime.datetime.today().strftime("%Y.%m.%d--%H`%M`%S"))
+    sheet['A1'] = 'Пункт 1'
+    sheet['B1'] = 'Пункт 2'
+    sheet['C1'] = 'инфо'
+    for i in range(2, len(pair_addresses)+2):
+        sheet['A'+str(i)] = pair_addresses[i - 2][0]
+        sheet['B'+str(i)] = pair_addresses[i - 2][1]
+        sheet['C'+str(i)] = all_info[i - 2]
+    sheet.column_dimensions['A'].width = 20
+    sheet.column_dimensions['B'].width = 20
+    sheet.column_dimensions['C'].width = 35
+    book.save(f"{date_name}.xlsx")
+    book.close()
+    print("*" * 5, f' Файл {date_name}.xlsx создан ', "*" * 5)
 
 
 def clear_the_field(field):
-    # Очищаем поле ввода (очень топорно пока что, но относительно похоже на человека)
-    for i in range(30):
+    # Очищаем поле ввода (топорно, конечно, но относительно похоже на человека)
+    for i in range(50):
         field.send_keys(Keys.BACKSPACE)
         field.send_keys(Keys.DELETE)
+
+
+def find_reverse_path():
+    reverse_button = driver.find_element_by_class_name("route-form-view__reverse")
+    ActionChains(driver).click_and_hold(on_element=reverse_button).perform()
+    reverse_button.click()
+    time.sleep(2)
+    info2 = driver.find_element_by_class_name('auto-route-snippet-view__route-subtitle').text
+    return info2
 
 
 def input_addresses(address, wait):
@@ -84,42 +75,52 @@ def input_addresses(address, wait):
     to_where_field.send_keys(Keys.ENTER)
 
     time.sleep(2)
-    info = driver.find_element_by_class_name('auto-route-snippet-view__route-subtitle').text
-    print(f"От {address[1]} до {address[0]} = {info}")
+    info1 = driver.find_element_by_class_name('auto-route-snippet-view__route-subtitle').text
 
-    # Обратный путь
-    reverse_button = driver.find_element_by_class_name("route-form-view__reverse")
-    ActionChains(driver).click_and_hold(on_element=reverse_button).perform()
-    reverse_button.click()
+    info2 = find_reverse_path()
 
-    time.sleep(2)
-    info2 = driver.find_element_by_class_name('auto-route-snippet-view__route-subtitle').text
-    print(f"От {address[1]} до {address[0]} = {info2}")
     driver.back()
-    return info, info2
+    return info1, info2
 
 
-if __name__ == '__main__':
+def main():
     while True:
         address = input('Введите адрес. Чтобы остановить, введите <стоп>')
         if address.lower() == 'стоп' or (address.lower() == 'cnjg'):
             break
         addresses.append(address)
 
-    capabilities = find_proxy()
-
-    driver = webdriver.Chrome(desired_capabilities=capabilities)
-    driver.maximize_window()
-    driver.get('https://yandex.ru/maps/geo/yekaterinburg/53166537/?ll=60.601571%2C56.788751&z=10.22')
-
-    wait = WebDriverWait(driver, 40)
-
     # Список всех маршрутов
     paths = permutations(addresses, len(addresses))
     # Все комбинации маршрутов
     pairs = combinations(addresses, 2)
+    global driver
+    while True:
+        try:
 
-    for pair in pairs:
-        input_addresses(pair, wait)
+            driver = webdriver.Chrome()
+            driver.maximize_window()
+            driver.get('https://yandex.ru/maps/geo/yekaterinburg/53166537/?ll=60.597383%2C56.837712&z=19.21')
+            for pair in pairs:
+                wait = WebDriverWait(driver, 50, poll_frequency=1, ignored_exceptions=(ElementNotVisibleException,
+                                                                                       TimeoutError))
+                info1, info2 = input_addresses(pair, wait)
+                all_info.append(str(info1))
+                all_info.append(str(info2))
+                all_addresses.append(str(pair[0]))
+                all_addresses.append(str(pair[1]))
+                all_addresses.append(str(pair[1]))
+                all_addresses.append(str(pair[0]))
+                print(f"От {pair[0]} до {pair[1]} = {info1}")
+                print(f"От {pair[1]} до {pair[0]} = {info2}")
+        except Exception:
+            print("Не удалось подключиться к Яндекс.Картам")
+        finally:
+            driver.close()
+            driver.quit()
+            break
+    write_book()
 
-    driver.close()
+
+if __name__ == '__main__':
+    main()
