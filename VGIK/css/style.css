@@ -1,0 +1,18 @@
+footer {
+    position: static;
+    bottom: 0;
+    left: 0px;
+    width: 100%;
+
+    font-family: Montserrat;
+    font-size: 16px;
+    text-align: center;
+    background: #231F20; 
+    max-height: 500px;
+    min-height: 350px;
+    color: white;
+}
+
+span.yellow_words {
+    color: #CEA572;
+}
