@@ -1,0 +1,730 @@
+@font-face {
+    font-family: 'Palace Of Sports';
+    src: url('../fonts/palace-of-sports-webfont.eot');
+    src: url('../fonts/palace-of-sports-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/palace-of-sports-webfont.woff2') format('woff2'),
+         url('../fonts/palace-of-sports-webfont.woff') format('woff'),
+         url('../fonts/palace-of-sports-webfont.ttf') format('truetype'),
+         url('../fonts/palace-of-sports-webfont.svg#palace_of_sportsregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Regular.eot');
+    src: url('../fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Montserrat-Regular.woff2') format('woff2'),
+         url('../fonts/Montserrat-Regular.woff') format('woff'),
+         url('../fonts/Montserrat-Regular.ttf') format('truetype'),
+         url('../fonts/Montserrat-Regular.svg') format('svg');
+    font-weight: 400;
+    font-style: normal;
+}
+/*
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Italic.eot');
+    src: url('../fonts/Montserrat-Italic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Montserrat-Italic.woff2') format('woff2'),
+         url('../fonts/Montserrat-Italic.woff') format('woff'),
+         url('../fonts/Montserrat-Italic.ttf') format('truetype'),
+         url('../fonts/Montserrat-Italic.svg') format('svg');
+
+    font-style: italic;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Bold.eot');
+    src: url('../fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Montserrat-Bold.woff2') format('woff2'),
+         url('../fonts/Montserrat-Bold.woff') format('woff'),
+         url('../fonts/Montserrat-Bold.ttf') format('truetype'),
+         url('../fonts/Montserrat-Bold.svg') format('svg');
+    font-weight: normal;
+    font-style: bold;
+}
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-BoldItalic.eot');
+    src: url('../fonts/Montserrat-BoldItalic.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Montserrat-BoldItalic.woff2') format('woff2'),
+         url('../fonts/Montserrat-BoldItalic.woff') format('woff'),
+         url('../fonts/Montserrat-BoldItalic.ttf') format('truetype'),
+         url('../fonts/Montserrat-BoldItalic.svg') format('svg');
+    font-weight: normal;
+    font-style: boldItalic;
+}
+*/
+
+
+@media (min-width: 1366px) {
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: Montserrat;
+    }
+
+
+    nav {
+        display: grid;
+        grid-template-columns: 80px 14fr 13fr;
+        margin: 0 auto;
+        width: 100%;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        height: 18%;
+        min-height: 135px;
+        z-index: 100;
+        background-color: #000;
+
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        a {text-decoration: none;}
+        .logoColumn {
+            padding-left: 13px;
+            padding-top: 13px;
+            flex-shrink: 0;
+            grid-column-start: 1;
+            grid-column-end: 1;
+            grid-row-start: 1;
+            grid-row-end: 2;
+        }
+        .firstColumn {
+            color: #fff;
+            flex-shrink: 2;
+            display: grid;
+            grid-template-rows: repeat(3, 40px);
+            align-items: center;
+            .firstStringFirstColumn {
+                grid-row-start: 1;
+                grid-row-end: 1;
+                padding-top: 10px;
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                .languageChange {
+                    color: #fff;
+                    margin-left: 10px;
+                }
+                .info {
+                    color: #CEA572;
+                }
+            }
+            .secondStringFirstColumn {
+                grid-row-start: 2;
+                grid-row-end: 2;
+                display: grid;
+                grid-template-columns: 530px 100px;
+                align-items: center;
+                .search { 
+                    background: none;
+                    align-items: baseline;
+                }
+                .search form {
+                    height: 20px;
+                    position: relative;
+                 }
+                .search input {
+                    border: none;
+                    border-bottom: 1px solid #58595B;
+                    outline: none;
+                    background: transparent;
+                    z-index: 2;
+                    color: #fff;
+                    position: absolute; 
+                    top: 0;
+                    left: 16px;
+                }
+                .search button {
+                    position: absolute; 
+                    bottom: 1px;
+                    left: 0px;
+                    height: 16px;
+                    width: 16px;
+                    background: url('../img/search.png') no-repeat;
+                    border: none;
+                    cursor: pointer;
+                    border-bottom: 1px solid #58595B;
+                }
+                
+            }
+            .thirdStringFirstColumn {
+                grid-row-start: 3;
+                grid-row-end: 3;
+            }
+        }
+
+        .secondColumn {
+            grid-column-start: 3;
+            grid-column-end: 3;
+            display: grid;
+            grid-template-rows: 35px 35px;
+            grid-row-gap: 10px;
+            padding-top: 15px;
+            padding-right: 15px;
+            flex-shrink: 1;
+            justify-items: right;
+            align-items: center;
+            .firstStringSecondColumn {
+                grid-row: 1;
+                display: inline-grid;
+                grid-template-columns: 10fr 4fr 2fr;
+                align-items: center;
+                .navAddress{
+                    color: #939598;
+                    white-space: nowrap;
+                }
+                .socialMedias {
+                    padding: 1px;
+                }
+                .NavPhoneNumber {
+                    color: #CEA572;
+                    white-space: nowrap;
+                }
+                  
+            }
+
+            .blindness {
+                display: grid;
+                grid-template-columns: 1fr 2fr;
+                align-items: center;
+                .blindnessText {
+                    color: #CEA572;
+                    justify-items: left;
+                }
+                .blindnessLogo {
+                    justify-items: right;
+                    display: grid;
+                    padding-right: 10px;
+                }
+            }
+            
+        }
+    }
+
+    h2 {
+        font-family: 'Palace Of Sports';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 100px;
+        color: #CEA572;
+    }
+    h3 {
+        font-family: 'Palace Of Sports';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 60px;
+        color: #CEA572;
+    }
+
+    .index {
+        min-width: 100%;
+        position: relative;
+        display: grid;
+        
+        grid-template-columns: 90fr 30fr 30fr;
+        grid-template-rows: 100px 350px 250px;
+        background: #000;
+
+        font-size: 12px;
+        .iText {
+            grid-column: 1;
+            grid-row-start: 1;
+            grid-row-end: 2;
+            color: #CEA572;
+            text-align: center;
+            font-family: 'Palace Of Sports';
+            font-size: 300px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+        .indexLinks {
+            grid-column: 1;
+            grid-row-start: 3;
+            grid-row-end: 4;
+            text-align: center;
+            font-size: 14px;
+            border: 2px solid transparent;
+            padding-top: 30px;
+            padding-right: 105px;
+            a {padding: 10px; color: #E5E5E5; text-decoration: underline #CEA572 1px; border: 2px solid transparent; border-spacing: 0px;}
+            a:hover { color: #CEA572; text-decoration: none; border: 2px solid #CEA572;  }     
+        }
+        .iText2 {
+            grid-column: 2;
+            grid-row: 2;
+            display: grid;
+            justify-items: left;
+            align-items: center;
+            font-size: 16px;
+        }
+        .iText3{
+            grid-column: 2;
+            grid-row: 2;
+            text-align: start;
+            align-items: last baseline;
+            display: grid;
+            margin-bottom: 0px;
+        }
+        .play{
+            position: relative;
+            grid-column: 3;
+            grid-row: 2;
+            .iPlay1 {
+                position: absolute;
+                left: 0px;
+                top: 140px;
+                border-radius: 100px;  
+            }
+            .iPlay2 {
+                position: absolute;
+                left: 69px;
+                top: 200px;
+            }
+            .playText {
+                position: absolute;
+                text-align: center;
+                top: 295px;
+                left: 12px;
+                font-size: 12px;
+            }
+        }
+    }
+
+
+
+        
+    .learningNav {
+        display: grid;
+        grid-template-columns: repeat(3,400px);
+        grid-template-rows: repeat(2,400px);
+        padding-top: 100px;
+        background-color: #231f20;
+
+        grid-column-gap: 40px;
+        grid-row-gap: 40px;
+        justify-content: center;
+        position: relative;
+        
+        img {
+            width: 400px;
+            height: 400px;
+        }
+        .learningNavPhotos {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .LearningLinks {
+                position: absolute;
+                font-size: 34px;
+                font-family: 'Palace Of Sports';
+                text-align: center;
+                color: #CEA572;
+                a:link { text-decoration: none; color: #CEA572;}
+            }
+        }
+    }
+
+    .learningTable {
+        background-color: #231f20;
+        
+        display: grid;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 16px;
+        font-family: Montserrat;
+        height: 300px;
+        a {color: #FFFFFF; text-decoration: none;}
+        .learningTab {
+            display: grid;
+            grid-template-columns: repeat(3, 400px);
+            grid-template-rows: 80px 80px;
+            grid-column-gap: 40px;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-top: 1px solid #6B6B6B;
+            padding-top: 25px;
+            border-bottom: 1px solid #6B6B6B;
+            padding-bottom: 25px;
+        }
+        
+        
+    }
+
+
+
+    .facts {
+        font-size: 16px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        color: #000;
+        position: relative;
+        height: 1250px;
+        margin: 0;
+        padding: 0;
+        text-align: left;
+        img {
+            width: 75%;
+            height: 75%;
+        }
+        .omText {
+            font-size: 70px;
+            position: absolute;
+            font-family: 'Palace Of Sports';
+            left: 140px;
+            color: #CEA572;
+        }
+        .lorem1 {
+            position: absolute; 
+            width: 590px;
+            top: 160px;
+            left: 140px;
+            font-size: 18px;
+        }
+        .omp1 {
+            position: absolute;
+            top: 130px;
+            right: 50px;
+        }
+        .omp2 {
+            position: absolute;
+            left: 140px;
+            top: 360px;
+        }
+        .omp3 {
+            position: absolute;
+            left: 10px;
+            top: 620px;
+        }
+        .omp4 {
+            position: absolute;
+            right: 0px;
+            top: 420px;
+        }
+        .omp5 {
+            position: absolute;
+            right: 70px;
+            top: 750px;
+        }
+        .omp6 {
+            position: absolute;
+            right: 80px;
+            top: 1010px;
+        }
+        .lorem2 {
+            position:absolute; 
+            text-align: right;
+            width: 250px; 
+            top: 400px; 
+            right:320px;
+        }
+        .lorem3 {
+            position:absolute; 
+            width: 470px; 
+            left: 500px;
+            top: 710px;
+        }
+        .lorem4 {
+            position:absolute; 
+            width: 470px; 
+            left: 500px;
+            top: 870px;
+        }
+        .lorem5 {
+            position:absolute;
+            text-align: right; 
+            width: 380px; 
+            left: 100px;
+            top: 1000px;
+        } 
+    }
+
+
+
+
+    .famousGraduates {
+        display: grid;
+        grid-template-rows: 100px 120px auto 200px;
+        background-color: #000;
+        align-items: center;
+        justify-items: center;
+        padding-top: 130px;
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        .fgText {
+            font-family: "Palace Of Sports";
+            color: #fff;
+            font-size: 50px;
+            grid-row: 1;
+        }
+        .graduatesText {
+            color: #CEA572;
+            display: flex;
+            text-align: center;
+            font-size: 16px;
+            grid-row: 2;
+            max-width: 50%;
+        }
+        .famousGraduatesPhotos {
+            grid-row: 3;
+            display: grid;
+            max-width: 80%;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: auto 50px 50px;
+            justify-items: center;
+            grid-column-gap: 15px;
+            color: #E5E5E5;
+            .fg1 {
+                grid-column: 1;
+                grid-row: 1;
+                .fg1_name {text-align: left; grid-row: 2;}
+                .fg1_year {text-align: right;}
+            }
+            .fg2 {
+                padding-top: 120px;
+                grid-column: 2;
+                grid-row: 1;
+                .fg2_name {text-align: left; grid-row: 2;}
+                .fg2_year {text-align: right;}
+            }
+            .fg3 {
+                grid-column: 3;
+                grid-row: 1;
+                .fg3_name {text-align: left; grid-row: 2;}
+                .fg3_year {text-align: right;}
+            }
+            .fg4 {
+                padding-top: 120px;
+                grid-column: 4;
+                grid-row: 1;
+                .fg4_name {text-align: left; grid-row: 2;}
+                .fg4_year {text-align: right;}
+            }
+            .fg5 {
+                grid-column: 5;
+                grid-row: 1;
+                .fg5_name {text-align: left; grid-row: 2;}
+                .fg5_year {text-align: right;}
+            }
+        .fgBottom {
+            grid-row: 4;          
+            align-items: top;
+        }
+        }
+    }
+
+
+    .bottom {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        display: grid;
+        grid-template-rows: auto auto 50px;
+        justify-content: center;
+        .bottomLogos {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-column-gap: 20px;
+            align-items: center;
+            .bl1 {grid-column: 1;}
+            .bl2 {grid-column: 2;}
+            .bl3 {grid-column: 3;}
+            .bl4 {grid-column: 4;}
+            .bl5 {grid-column: 5;}
+        }
+        .bottomFrame {
+            grid-row: 2;
+            padding-bottom: 20px;
+            margin-bottom: 50px;
+            max-width: 800px;
+            text-align: center;
+            display: flex;
+            margin: 0 auto;
+            border: 1px solid #58595B;
+            box-sizing: border-box;
+        } 
+    }
+
+
+    footer {
+        position: static;
+        padding-top: 30px;
+        padding-bottom: 30px;
+
+        display: grid;
+        grid-template-columns: 90px 120px 80px 140px 130px 300px 120px 190px;
+        grid-column-gap: 5px;
+        grid-template-rows: 30px 30px 30px 100px 18px 18px 18px;
+        grid-row-gap: 10px;
+        
+        font-family: Montserrat;
+        font-size: 14px;
+        text-align: center;
+        background-color: #231F20;
+        color: #fff;
+        align-items: center;
+        align-content: center;
+        justify-items: left;
+        justify-content: center;
+        .fAddress1 {
+            grid-column: 1;
+            grid-row: 1;
+            color: #CEA572;
+        }
+        .fAddress2 {
+            grid-column-start: 2;
+            grid-column-end: 5;
+            grid-row: 1;
+            color: #fff;
+        }
+        .grap1 {
+            grid-column: 5;
+            grid-row: 1;
+            color: #CEA572;
+        }
+        .grap2 {
+            grid-column: 6;
+            grid-row: 1;
+            color: #fff;
+        }
+        .pressS {
+            grid-column: 7;
+            grid-row: 1;
+            a {color: #CEA572;}
+        }
+        .vuh1 {
+            grid-column: 5;
+            grid-row: 2;
+            color: #CEA572;
+        }
+        .vuh2 {
+            grid-column: 6;
+            grid-row: 2;
+            color: #fff;
+        }
+        .phone1 {
+            grid-column: 1;
+            grid-row: 2;
+            color: #CEA572;
+        }
+        .phone2 {
+            grid-column: 2;
+            grid-row: 2;
+            color: #fff;
+        }
+        .fax1 {
+            grid-column: 3;
+            grid-row: 2;
+            color: #CEA572;
+        }
+        .fax2 {
+            grid-column: 4;
+            grid-row: 2;
+            color: #fff;
+        }
+        .mail1 {
+            grid-column: 1;
+            grid-row: 3;
+            color: #CEA572;
+        }
+        .mail2 {
+            grid-column: 2;
+            grid-row: 3;
+            color: #fff;
+            a {color: #fff;}
+        }
+        .offSite {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 4;
+            color: #CEA572;
+            font-size: 11px;
+            justify-self: left;
+            text-align: left;
+            a {color: #CEA572;}
+        }
+        .busGov {
+            grid-column: 4;
+            grid-row: 4;
+            font-size: 12px;
+            justify-self: right;
+            a {color: #CEA572;}
+        }
+        .mark {
+            grid-column: 5;
+            grid-row: 4;
+            font-size: 12px;
+            a {color: #CEA572;}
+        }
+        .footerLogo {
+            grid-column: 1;
+            grid-row-start: 5;
+            grid-row-end: 8;
+        }
+        .flt1 {
+            grid-column-start: 2;
+            grid-column-end: 5;
+            grid-row: 5;
+            font-size: 11px;
+            text-align: left;
+        }
+        .flt2 {
+            grid-column-start: 2;
+            grid-column-end: 5;
+            grid-row: 6;
+            font-size: 11px;
+            text-align: left;
+        }
+        .flt3 {
+            grid-column-start: 2;
+            grid-column-end: 5;
+            grid-row: 7;
+            font-size: 11px;
+            text-align: left;
+        }
+        .minKult {
+            grid-column-start: 5;
+            grid-column-end: 7;
+            grid-row: 6;
+            font-size: 12px;
+            a { color: #CEA572;}
+        }
+        .site{
+            grid-column: 8;
+            grid-row: 6;
+            color: #5F6164;
+            font-size: 12px;
+            a {color: #5F6164;}
+        }
+        
+    }
+}
+
+@media (max-width: 1365px) {
+    
+}
+
+@media (max-width: 1024px) {
+    
+}
+
+@media (max-width: 992px) {
+    
+}
+
+@media (max-width: 767px) {
+    
+}
