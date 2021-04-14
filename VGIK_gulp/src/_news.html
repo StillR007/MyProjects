@@ -1,91 +1,36 @@
 <div class="_news">
-    <p class="News" align="left">НОВОСТИ</p>
+    <div class="_newsText">НОВОСТИ</div>
     <div class="_newsTrumbLines">
-        <div class="pictureBox">
-            <div class="_newsDate"><span class="_newsDateBlack">00.00.<span class="_newsDateYellow">0000</span></span></div>
-            <img src="/img/_news1.png" width="450" height="240">
-            <p>Подпись</p>
-            <img src="/img/_newsVector.png" width="450" height="2">
+        <div class="_newsBox">
+            <div class="_newsDate"><span class="_newsDateWhite">00.00.<span class="_newsDateYellow">0000</span></span></div>
+            <div class="_newsPhoto"><img src="/img/_news1.png"></div>
+            <div class="_newsText2"><a href="/">100 лет со дня рождения выпускника ВГИКа Самсона Самсонова</a></div>
         </div>
-        <div class="pictureBox">
-            <div class="_newsDate"><span class="_newsDateBlack">00.00.<span class="_newsDateYellow">0000</span></span></div>
-            <img src="/img/_news2.png" width="450" height="240">
-            <p>Подпись</p>
-            <img src="/img/_newsVector.png" width="450" height="2">
+        <div class="_newsBox">
+            <div class="_newsDate"><span class="_newsDateWhite">00.00.<span class="_newsDateYellow">0000</span></span></div>
+            <div class="_newsPhoto"><img src="/img/_news2.png"></div>
+            <div class="_newsText2"><a href="/">Студенты ВГИКа приняли участие в акции «Свеча памяти»</a></div>
         </div>
-        <div class="pictureBox">
-            <div class="_newsDate"><span class="_newsDateBlack">00.00.<span class="_newsDateYellow">0000</span></span></div>
-            <img src="/img/_news3.png" width="450" height="240">
-            <p>Подпись</p>
-            <img src="/img/_newsVector.png" width="450" height="2">
+        <div class="_newsBox">
+            <div class="_newsDate"><span class="_newsDateWhite">00.00.<span class="_newsDateYellow">0000</span></span></div>
+            <div class="_newsPhoto"><img src="/img/_news3.png"></div>
+            <div class="_newsText2"><a href="/">Поздравляем с юбилеем Вадима Валентиновича Алисова!</a></div>
         </div>
-        <div class="pictureBox">
-            <div class="_newsDate"><span class="_newsDateBlack">00.00.<span class="_newsDateYellow">0000</span></span></div>
-            <img src="/img/_news4.png" width="450" height="240">
-            <p>Подпись</p>
-            <img src="/img/_newsVector.png" width="450" height="2">
+        <div class="_newsBox">
+            <div class="_newsDate"><span class="_newsDateWhite">00.00.<span class="_newsDateYellow">0000</span></span></div>
+            <div class="_newsPhoto"><img src="/img/_news4.png"></div>
+            <div class="_newsText2"><a href="/">По итогам мастер-класса Сергея Лаврова</a></div>
         </div>
-        <div class="pictureBox">
-            <div class="_newsDate"><span class="_newsDateBlack">00.00.<span class="_newsDateYellow">0000</span></span></div>
-            <img src="/img/_news5.png" width="450" height="240">
-            <p>Подпись</p>
-            <img src="/img/_newsVector.png" width="450" height="2">
-        </div>  
-        <div class="pictureBox">
-            <div class="_newsDate"><span class="_newsDateBlack">00.00.<span class="_newsDateYellow">0000</span></span></div>
-            <img src="/img/_news6.png" width="450" height="240">
-            <p>Подпись</p>
-            <img src="/img/_newsVector.png" width="450" height="2">
+        <div class="_newsBox">
+            <div class="_newsDate"><span class="_newsDateWhite">00.00.<span class="_newsDateYellow">0000</span></span></div>
+            <div class="_newsPhoto"><img src="/img/_news5.png"></div>
+            <div class="_newsText2"><a href="/">Итоги фото-конкурса "Многоликость спорта"</a></div>
+        </div>
+        <div class="_newsBox">
+            <div class="_newsDate"><span class="_newsDateWhite">00.00.<span class="_newsDateYellow">0000</span></span></div>
+            <div class="_newsPhoto"><img src="/img/_news6.png"></div>
+            <div class="_newsText2"><a href="/">Итоги конкурса на лучший спортивный киноролик</a></div>
         </div>
     </div>
-    <p align="right"><a href="/" style="color: #CEA572; font-size: 24px;">ВСЕ НОВОСТИ</a></p>
+    <div class="_newsLink"><a href="/">ВСЕ НОВОСТИ</a></div>
 </div>
-
-._news {
-    display: grid;
-    grid-template-rows: 1fr 680px 110px;
-    justify-content: center;
-    .News {
-        font-size: 80px;
-        font-family: 'Palace Of Sports';
-        color: #CEA572;
-        margin-top: 50px;
-        margin-bottom: 40px;
-    }
-    ._newsTrumbLines {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-column-gap: 20px;
-        grid-template-rows: 240px;
-        grid-row-gap: 100px;
-        grid-column-gap: 20px;
-        justify-content: center;
-        .pictureBox {
-            width: 450px;
-            height: 400px;
-            position: relative;
-            ._newsDate {
-                display: inline;
-                position: relative;
-                width: 156px;
-                height: 61px;
-                
-                font-family: 'Palace Of Sports';
-                font-style: normal;
-                font-weight: normal;
-                font-size: 30px;
-                line-height: 0px;
-                text-transform: uppercase;
-                ._newsDateBlack{
-                    position: absolute;
-                    color: #000000;
-                }
-                ._newsDateYellow{
-                    position: absolute;
-                    color: #CEA572;
-                }
-            }
-        }
-    }
-}
-
