@@ -7,22 +7,44 @@
 </head>
 <body>
     @@include('_navbar.html')
-    <h2 align="center">ФАКУЛЬТЕТЫ</h2>
+    @@include('_navbarMini.html')
+
+    <div class="facultiesLogo">
+        <div class="facultiesLogoImg"><img src="./img/facultiesLogo.png"></div>
+        <div class="facultiesLogoTextNav">
+            <a href="/">Главная</a> / 
+            <a href="/faculties.html">Факультеты</a>
+        </div>
+        <div class="facultiesLogoText"><h2 align="center">ФАКУЛЬТЕТЫ</h2></div>
+        <div class="facultiesEmptyBox"></div>
+    </div>
+
+    
     <div class="faculties">
-    <p class="facultiesLine1">
-            <a href="/producer.html"><img src="/img/facultie1.png" width="450" height="450"></a>
-            <a href=""><img src="/img/facultie2.png" width="450" height="450"></a>
-            <a href=""><img src="/img/facultie3.png" width="450" height="450"></a>
-    </p>
-    <p class="facultiesLine2">
-            <a href="/college.html"><img src="/img/facultie4.png" width="450" height="450"></a>
-            <a href=""><img src="/img/facultie5.png" width="450" height="450"></a>
-            <a href=""><img src="/img/facultie6.png" width="450" height="450"></a>
-    </p>
-    <p class="facultiesLine3">
-            <a href="/college.html"><img src="/img/facultie7.png" width="450" height="450"></a>
-            <a href=""><img src="/img/facultie8.png" width="450" height="450"></a>
-    </p>
+        <div class="facultie">
+            <div class="facultieText"><a href="./director.html">Режиссерский факультет</a></div>
+        </div>
+        <div class="facultie">
+            <div class="facultieText"><a href="/">Актерский факультет</a></div>
+        </div>
+        <div class="facultie">
+            <div class="facultieText"><a href="/">Операторский факультет</a></div>
+        </div>
+        <div class="facultie">
+            <div class="facultieText"><a href="/">Анимации и мультимедиа факультет</a></div>
+        </div>
+        <div class="facultie">
+            <div class="facultieText"><a href="/">Художественный факультет</a></div>
+        </div>
+        <div class="facultie">
+            <div class="facultieText"><a href="/">Сценарно-киноведческий факультет</a></div>
+        </div>
+        <div class="facultie">
+            <div class="facultieText"><a href="/">Продюсерский факультет</a></div>
+        </div>
+        <div class="facultie">
+            <div class="facultieText"><a href="/">Межфакультетские кафедры и лаборатории</a></div>
+        </div>
     </div>
 
     @@include('_footer.html')
