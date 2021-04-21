@@ -21,6 +21,18 @@
     font-weight: 400;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Bold.eot');
+    src: url('../fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Montserrat-Bold.woff2') format('woff2'),
+         url('../fonts/Montserrat-Bold.woff') format('woff'),
+         url('../fonts/Montserrat-Bold.ttf') format('truetype'),
+         url('../fonts/Montserrat-Bold.svg') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
 /*
 @font-face {
     font-family: 'Montserrat';
@@ -30,20 +42,10 @@
          url('../fonts/Montserrat-Italic.woff') format('woff'),
          url('../fonts/Montserrat-Italic.ttf') format('truetype'),
          url('../fonts/Montserrat-Italic.svg') format('svg');
-
+    font-weight: normal;
     font-style: italic;
 }
-@font-face {
-    font-family: 'Montserrat';
-    src: url('../fonts/Montserrat-Bold.eot');
-    src: url('../fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/Montserrat-Bold.woff2') format('woff2'),
-         url('../fonts/Montserrat-Bold.woff') format('woff'),
-         url('../fonts/Montserrat-Bold.ttf') format('truetype'),
-         url('../fonts/Montserrat-Bold.svg') format('svg');
-    font-weight: normal;
-    font-style: bold;
-}
+
 @font-face {
     font-family: 'Montserrat';
     src: url('../fonts/Montserrat-BoldItalic.eot');
@@ -56,7 +58,6 @@
     font-style: boldItalic;
 }
 */
-
 
 
 @media (min-width: 1601px) {
@@ -88,12 +89,8 @@
         position: fixed;
         top: 0px;
         left: 0px;
-        height: 18%;
-        min-height: 135px;
+        height: 135px;
         z-index: 100;
-        opacity: 0.9;
-        filter: alpha(Opacity=90);
-
         font-family: Montserrat;
         font-style: normal;
         font-weight: normal;
@@ -168,7 +165,7 @@
             .nav-second-сolumn-first-string {
                 grid-row: 1;
                 display: inline-grid;
-                grid-template-columns: 2fr 1fr 1fr;
+                grid-template-columns: 2fr auto auto;
                 align-items: center;
                 justify-content: center;
                 justify-items: center;
@@ -179,11 +176,13 @@
                     grid-column: 1;
                 }
                 .nav-second-сolumn-first-string__social-medias {
-                    display: inline-flex;
-                    justify-content: space-between;
+                    display: flex;
+                    justify-content: space-around;
+                    flex-wrap: nowrap;
                     grid-row: 1;
                     grid-column: 2;
                     img {
+                        padding: 0 7px;
                         width: 25px;
                         height: 25px;
                     }
@@ -231,19 +230,16 @@
                     width: 325px;
                 }
                 .nav-second-сolumn-second-string__search button {
-                    position: absolute; 
-                    bottom: 1px;
+                    position: absolute;
                     left: 0px;
-                    height: 16px;
-                    width: 16px;
+                    height: 19px;
+                    width: 19px;
                     background: url('../img/search.png') no-repeat;
                     border: none;
                     cursor: pointer;
                     border-bottom: 1px solid #58595B;
                 }
-
-
-                .nav-second-сolumn-second-string__blindness {
+                .nav__blindness {
                     grid-row: 2;
                     grid-column-start: 2;
                     grid-column-end: 3;
@@ -251,21 +247,61 @@
                     justify-content: right;
                     justify-items: right;
                     display: inline-flex;
-                    .nav-second-сolumn-second-string__blindness-text {
-                        color: #CEA572;
-                        margin-bottom: 3px;
-                    }
-                    .nav-second-сolumn-second-string__blindness-logo {
-                        img {
-                            width: 32px;
-                        }
+                    .nav__blindness_logo {
+                        width: 32px;
+                        height: 22px;
                         padding-right: 10px;
+                        background: transparent;
+                        background-image: src="./img/blindness.png";
+                        border: 0;
+                        cursor: pointer;
                     }
+                    .nav__blindness_text {
+                        color: #CEA572;
+                        background: transparent;
+                        font-size: 16px;
+                        border: 0;
+                        padding-left: 15px;
+                        cursor: pointer;
+                    }
+
                 }
             
             }
             
         }
+    }
+    nav.scroll {
+        z-index: 100;
+        opacity: 0.9;
+        filter: alpha(Opacity=90);
+        background-color: #000;
+        min-height: 100px;
+        max-height: 100px;      
+        .nav-logo-column {
+            .brand-logo {
+                img {
+                    width: 56px;
+                    height: 74px;
+                }
+            }
+        }
+        .nav-first-сolumn {
+            color: #58595B;
+            flex-shrink: 2;
+            display: grid;
+            grid-template-rows: repeat(3, 30px);
+            grid-row-gap: 3px;
+        }
+        .nav-second-сolumn {
+            grid-column-start: 3;
+            grid-column-end: 3;
+            display: grid;
+            grid-row-gap: 15px;
+            grid-template-rows: repeat(2,30px);
+            padding-top: 15px;
+        }
+
     }
     .nav-mini {
         display: none;
@@ -305,8 +341,14 @@
                 border: 2px solid transparent;
                 padding-top: 30px;
                 padding-right: 95px;
-                a {padding: 10px; color: #E5E5E5; text-decoration: underline #CEA572 1px; border: 2px solid transparent; border-spacing: 0px;}
-                a:hover { color: #CEA572; text-decoration: none; border: 2px solid #CEA572;}     
+                a {padding: 10px 0; color: #E5E5E5; text-decoration: none; border: 2px solid transparent; border-spacing: 0px; border-bottom: 1px solid #CEA572;}
+                a:hover { color: #CEA572; text-decoration: none; border: 2px solid #CEA572;} 
+                .index-column-1__links_1 {
+                    margin-right: 20px;
+                }
+                .index-column-1__links_2 {
+                    margin-right: 20px;
+                } 
             }
         }
         .index-column-2 {
@@ -380,7 +422,7 @@
         display: none;
     }
         
-    .learningNav {
+    .learning {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
@@ -400,181 +442,93 @@
             width: 500px;
             height: 500px;
         }
-        .learningNavPhotos {
+        a { text-decoration: none; color: #000;}
+        .learning__photo {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            .LearningLinks {
+            .learning__photo_link {
                 position: absolute;
                 font-size: 34px;
                 font-family: 'Palace Of Sports';
                 text-align: center;
-                color: #CEA572;
-                a:link { text-decoration: none; color: #CEA572;}
+                color: #CEA572; 
             }
         }
     }
 
-    ._newsAll {
-        background-color: #312D2E;
-        ._news {
+
+    .news {
+        background-color: #fff;
+        display: grid;
+        grid-template-rows: 200px auto 110px;
+        justify-content: center;
+        font-family: Montserrat;
+        font-size: 14px;
+        color: #fff;
+        .news__text {
+            font-size: 90px;
+            font-family: 'Palace Of Sports';
+            color: #CEA572;
+            grid-row: 1;
+            text-align: left;
+            align-items: center;
+            display: flex;
+            justify-content: left;
+        }
+        .news-trumb-lines {
             display: grid;
-            grid-template-rows: 200px auto 110px;
+            grid-template-columns: repeat(3, 500px);
+            grid-column-gap: 20px;
+            grid-template-rows: repeat(2, auto);
+            grid-row-gap: 60px;
+            grid-column-gap: 20px;
             justify-content: center;
-            font-family: Montserrat;
-            font-size: 14px;
-            color: #fff;
-            ._newsText {
-                font-size: 90px;
-                font-family: 'Palace Of Sports';
-                color: #CEA572;
-                grid-row: 1;
-                text-align: left;
-                align-items: center;
-                display: flex;
-                justify-content: left;
-            }
-            ._newsTrumbLines {
-                display: grid;
-                grid-template-columns: repeat(3, 500px);
-                grid-column-gap: 20px;
-                grid-template-rows: repeat(2, auto);
-                grid-row-gap: 60px;
-                grid-column-gap: 20px;
-                justify-content: center;
-                width: 80%;
-                margin-left: 10%;
-                ._newsBox {
-                    display: block;
-                    position: relative;
-                    border-bottom: 1px solid #BE9C6C;
-                    padding: 0 0 20px 0;
-                    ._newsDate {
-                        position: absolute;
-                        text-transform: uppercase;
-                        font-family: 'Palace Of Sports';
-                        font-size: 34px;
-                        position: absolute;
-                        top: -25px;
-                        ._newsDateWhite {
-                            color: #fff;
-                        }
-                        ._newsDateYellow {
-                            color: #CEA572;
-                        }
+            width: 80%;
+            margin-left: 10%;
+            .news-box {
+                display: block;
+                position: relative;
+                border-bottom: 1px solid #BE9C6C;
+                padding: 0 0 20px 0;
+                .news-box__date {
+                    position: absolute;
+                    text-transform: uppercase;
+                    font-family: 'Palace Of Sports';
+                    font-size: 34px;
+                    position: absolute;
+                    top: -25px;
+                    .news-box__date_black {
+                        color: #000;
                     }
-                    ._newsPhoto {
-                        img {
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-                    ._newsText2 {
-                        a {color: #fff; text-decoration: none;}
+                    .news-box__date_yellow {
+                        color: #CEA572;
                     }
                 }
+                .news-box__photo {
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .news-box__text {
+                    a {color: #000; text-decoration: none;}
+                }
+            }
                 
-            }
-            ._newsLink {
-                grid-row: 3;
-                text-align: right;
-                align-items: center;
-                display: flex;
-                justify-content: right;
-                a {font-size: 28px; font-family: 'Palace Of Sports'; color: #CEA572;}
-            }
+        }
+        .news__bottom-link {
+            grid-row: 3;
+            text-align: right;
+            align-items: center;
+            display: flex;
+            justify-content: right;
+            a {font-size: 28px; font-family: 'Palace Of Sports'; color: #CEA572;}
         }
     }
 
-    .facts {
-        font-size: 16px;
-        font-family: Montserrat;
-        font-style: normal;
-        font-weight: normal;
-        color: #000;
-        position: relative;
-        height: 1250px;
-        margin: 0;
-        padding: 0;
-        text-align: left;
-        h2 {color: #000}
-        img {
-            width: 100%;
-            height: 100%;
-        }
-        .omText {
-            font-size: 70px;
-            position: absolute;
-            font-family: 'Palace Of Sports';
-            left: 140px;
-            color: #CEA572;
-        }
-        .lorem1 {
-            position: absolute; 
-            width: 590px;
-            top: 160px;
-            left: 140px;
-            font-size: 18px;
-        }
-        .omp1 {
-            position: absolute;
-            top: 130px;
-            right: 50px;
-        }
-        .omp2 {
-            position: absolute;
-            left: 140px;
-            top: 360px;
-        }
-        .omp3 {
-            position: absolute;
-            left: 10px;
-            top: 620px;
-        }
-        .omp4 {
-            position: absolute;
-            right: 0px;
-            top: 420px;
-        }
-        .omp5 {
-            position: absolute;
-            right: 70px;
-            top: 750px;
-        }
-        .omp6 {
-            position: absolute;
-            right: 80px;
-            top: 1010px;
-        }
-        .lorem2 {
-            position:absolute; 
-            text-align: right;
-            width: 250px; 
-            top: 400px; 
-            right:320px;
-        }
-        .lorem3 {
-            position:absolute; 
-            width: 470px; 
-            left: 500px;
-            top: 710px;
-        }
-        .lorem4 {
-            position:absolute; 
-            width: 470px; 
-            left: 500px;
-            top: 870px;
-        }
-        .lorem5 {
-            position:absolute;
-            text-align: right; 
-            width: 380px; 
-            left: 100px;
-            top: 1000px;
-        } 
-    }
-    .famousGraduates {
+    .famous-graduates {
         display: flex;
         flex-direction: column;
         grid-row-gap: 50px;
@@ -586,20 +540,20 @@
             width: 100%;
             height: 100%;
         }
-        .fgText {
+        .famous-graduates__text_1 {
             font-family: "Palace Of Sports";
             color: #fff;
             font-size: 50px;
             text-align: center;
         }
-        .graduatesText {
+        .famous-graduates__text_2 {
             color: #CEA572;
             display: flex;
             text-align: center;
             font-size: 16px;
             max-width: 50%;
         }
-        .famousGraduatesPhotos {
+        .famous-graduates__photos {
             display: grid;
             max-width: 80%;
             grid-template-columns: repeat(5, 1fr);
@@ -607,43 +561,161 @@
             justify-items: center;
             grid-column-gap: 15px;
             color: #E5E5E5;
-            .fg1 {
+            .famous-graduates__photo_1 {
                 grid-column: 1;
                 grid-row: 1;
-                .fg1_name {text-align: left; grid-row: 2;}
-                .fg1_year {text-align: right;}
+                .famous-graduates__photo_name-1 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-1 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg2 {
+            .famous-graduates__photo_2 {
                 grid-column: 2;
                 grid-row: 2;
-                .fg2_name {text-align: left; grid-row: 2;}
-                .fg2_year {text-align: right;}
+                .famous-graduates__photo_name-2 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-2 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg3 {
+            .famous-graduates__photo_3 {
                 grid-column: 3;
                 grid-row: 1;
-                .fg3_name {text-align: left; grid-row: 2;}
-                .fg3_year {text-align: right;}
+                .famous-graduates__photo_name-3 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-3 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg4 {
+            .famous-graduates__photo_4 {
                 grid-column: 4;
                 grid-row: 2;
-                .fg4_name {text-align: left; grid-row: 2;}
-                .fg4_year {text-align: right;}
+                .famous-graduates__photo_name-4 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-4 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg5 {
+            .famous-graduates__photo_5 {
                 grid-column: 5;
                 grid-row: 1;
-                .fg5_name {text-align: left; grid-row: 2;}
-                .fg5_year {text-align: right;}
+                .famous-graduates__photo_name-5 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-5 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
         }
-        .fgBottom {        
+        .famous-graduates__link {        
             align-items: top;
             margin: 50px 0;
-        
+            font-size: 22px; 
+            font-family: 'Palace Of Sports';
+            a {color: #CEA572; }
         }
     }
+
     .bottom {
         display: grid;
         align-items: center;
@@ -651,29 +723,74 @@
         display: grid;
         grid-template-rows: auto auto 50px;
         justify-content: center;
-        .bottomLogos {
+        .bottom-logos {
             padding-top: 40px;
             padding-bottom: 40px;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-column-gap: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             align-items: center;
-            .bl1 {grid-column: 1;}
-            .bl2 {grid-column: 2;}
-            .bl3 {grid-column: 3;}
-            .bl4 {grid-column: 4;}
-            .bl5 {grid-column: 5;}
+            img {
+                width: 162px;
+                height: 48px;
+            }
         }
-        .bottomFrame {
+        .bottom-text {
             grid-row: 2;
             padding-bottom: 20px;
             margin-bottom: 50px;
-            max-width: 800px;
+            width: 606px;
+            height: 472px;
             text-align: center;
             display: flex;
+            justify-content: center;
+            justify-items: center;
+            flex-direction: column;
             margin: 0 auto;
             border: 1px solid #58595B;
             box-sizing: border-box;
+            .bottom-text_gold {
+                color: #CEA572; 
+                text-align: center; 
+                font-family: 'Palace Of Sports';
+                font-size: 22px;
+                line-height: 22px;
+                text-transform: uppercase;
+            }
+            .bottom-text_bold {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 155.9%;
+            }
+            .bottom-text_info {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 155.9%;
+            }
+            .bottom-text_gold-2 {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 155.9%;
+                color: #CEA572;
+            }
+            a {color: #CEA572;}
+            .bottom-text_bottom {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 155.9%;
+                width: 56%;
+                text-align: center;
+                position: relative;
+                left: 22%;
+            }
         } 
     }
     footer {
@@ -691,79 +808,80 @@
         font-size: 14px;
         text-align: center;
         background-color: #231F20;
+        line-height: 155.9%;
         color: #fff;
         align-items: center;
         align-content: center;
         justify-items: left;
         justify-content: center;
-        .fAddress1 {
+        .footer__address {
             grid-column: 1;
             grid-row: 1;
             color: #CEA572;
         }
-        .fAddress2 {
+        .footer__address_2 {
             grid-column-start: 2;
             grid-column-end: 5;
             grid-row: 1;
             color: #fff;
         }
-        .grap1 {
+        .footer__grap {
             grid-column: 5;
             grid-row: 1;
             color: #CEA572;
         }
-        .grap2 {
+        .footer__grap_2 {
             grid-column: 6;
             grid-row: 1;
             color: #fff;
         }
-        .pressS {
+        .footer__press {
             grid-column: 7;
             grid-row: 1;
             a {color: #CEA572;}
         }
-        .vuh1 {
+        .footer__output {
             grid-column: 5;
             grid-row: 2;
             color: #CEA572;
         }
-        .vuh2 {
+        .footer__output_2 {
             grid-column: 6;
             grid-row: 2;
             color: #fff;
         }
-        .phone1 {
+        .footer__phone {
             grid-column: 1;
             grid-row: 2;
             color: #CEA572;
         }
-        .phone2 {
+        .footer__phone_2 {
             grid-column: 2;
             grid-row: 2;
             color: #fff;
         }
-        .fax1 {
+        .footer__fax {
             grid-column: 3;
             grid-row: 2;
             color: #CEA572;
         }
-        .fax2 {
+        .footer__fax_2 {
             grid-column: 4;
             grid-row: 2;
             color: #fff;
         }
-        .mail1 {
+        .footer__mail {
             grid-column: 1;
             grid-row: 3;
             color: #CEA572;
         }
-        .mail2 {
+        .footer__mail_2 {
             grid-column: 2;
             grid-row: 3;
             color: #fff;
             a {color: #fff;}
         }
-        .offSite {
+        .footer__offsite {
             grid-column-start: 1;
             grid-column-end: 4;
             grid-row: 4;
@@ -773,53 +891,57 @@
             text-align: left;
             a {color: #CEA572;}
         }
-        .busGov {
+        .footer__bus-gov {
             grid-column: 4;
             grid-row: 4;
             font-size: 12px;
             justify-self: right;
             a {color: #CEA572;}
         }
-        .mark {
+        .footer__mark {
             grid-column: 5;
             grid-row: 4;
             font-size: 12px;
             a {color: #CEA572;}
         }
-        .footerLogo {
+        .footer__logo_photo {
             grid-column: 1;
             grid-row-start: 5;
             grid-row-end: 8;
+            img {
+                width: 47px;
+                height: 46px;
+            }
         }
-        .flt1 {
+        .footer__logo_text-1 {
             grid-column-start: 2;
             grid-column-end: 5;
             grid-row: 5;
             font-size: 11px;
             text-align: left;
         }
-        .flt2 {
+        .footer__logo_text-2 {
             grid-column-start: 2;
             grid-column-end: 5;
             grid-row: 6;
             font-size: 11px;
             text-align: left;
         }
-        .flt3 {
+        .footer__logo_text-3 {
             grid-column-start: 2;
             grid-column-end: 5;
             grid-row: 7;
             font-size: 11px;
             text-align: left;
         }
-        .minKult {
+        .footer__min-kult {
             grid-column-start: 5;
             grid-column-end: 7;
             grid-row: 6;
             font-size: 12px;
             a { color: #CEA572;}
         }
-        .site{
+        .footer__rus-center {
             grid-column: 8;
             grid-row: 6;
             color: #5F6164;
@@ -1167,12 +1289,10 @@
         position: fixed;
         top: 0px;
         left: 0px;
-        height: 18%;
-        min-height: 135px;
+        height: 135px;
         z-index: 100;
         opacity: 0.9;
         filter: alpha(Opacity=90);
-
         font-family: Montserrat;
         font-style: normal;
         font-weight: normal;
@@ -1248,7 +1368,7 @@
             .nav-second-сolumn-first-string {
                 grid-row: 1;
                 display: inline-grid;
-                grid-template-columns: 2fr 1fr 1fr;
+                grid-template-columns: 2fr auto auto;
                 align-items: center;
                 justify-content: center;
                 justify-items: center;
@@ -1259,13 +1379,15 @@
                     grid-column: 1;
                 }
                 .nav-second-сolumn-first-string__social-medias {
-                    display: inline-flex;
-                    justify-content: space-between;
+                    display: flex;
+                    justify-content: space-around;
+                    flex-wrap: nowrap;
                     grid-row: 1;
                     grid-column: 2;
                     img {
-                        width: 25px;
-                        height: 25px;
+                        padding: 0 5px;
+                        width: 22px;
+                        height: 22px;
                     }
                 }
                 .nav-second-сolumn-first-string__phone-number {
@@ -1311,17 +1433,16 @@
                     width: 325px;
                 }
                 .nav-second-сolumn-second-string__search button {
-                    position: absolute; 
-                    bottom: 1px;
+                    position: absolute;
                     left: 0px;
-                    height: 16px;
-                    width: 16px;
+                    height: 19px;
+                    width: 19px;
                     background: url('../img/search.png') no-repeat;
                     border: none;
                     cursor: pointer;
                     border-bottom: 1px solid #58595B;
                 }
-                .nav-second-сolumn-second-string__blindness {
+                .nav__blindness {
                     grid-row: 2;
                     grid-column-start: 2;
                     grid-column-end: 3;
@@ -1329,21 +1450,61 @@
                     justify-content: right;
                     justify-items: right;
                     display: inline-flex;
-                    .nav-second-сolumn-second-string__blindness-text {
-                        color: #CEA572;
-                        margin-bottom: 3px;
-                    }
-                    .nav-second-сolumn-second-string__blindness-logo {
+                    .nav__blindness_logo {
+                        width: 32px;
+                        height: 22px;
                         padding-right: 10px;
-                        img {
-                            width: 32px;
-                        }
+                        background: transparent;
+                        background-image: src="./img/blindness.png";
+                        border: 0;
+                        cursor: pointer;
                     }
+                    .nav__blindness_text {
+                        color: #CEA572;
+                        background: transparent;
+                        font-size: 16px;
+                        border: 0;
+                        padding-left: 15px;
+                        cursor: pointer;
+                    }
+
                 }
             
             }
             
         }
+    }
+    nav.scroll {
+        z-index: 100;
+        opacity: 0.9;
+        filter: alpha(Opacity=90);
+        background-color: #000;
+        min-height: 100px;
+        max-height: 100px;      
+        .nav-logo-column {
+            .brand-logo {
+                img {
+                    width: 56px;
+                    height: 74px;
+                }
+            }
+        }
+        .nav-first-сolumn {
+            color: #58595B;
+            flex-shrink: 2;
+            display: grid;
+            grid-template-rows: repeat(3, 30px);
+            grid-row-gap: 3px;
+        }
+        .nav-second-сolumn {
+            grid-column-start: 3;
+            grid-column-end: 3;
+            display: grid;
+            grid-row-gap: 15px;
+            grid-template-rows: repeat(2,30px);
+            padding-top: 15px;
+        }
+
     }
     .nav-mini {
         display: none;
@@ -1353,7 +1514,6 @@
         min-width: 100%;
         position: relative;
         display: grid;
-        
         grid-template-columns: 3fr 1fr 1fr;
         grid-template-rows: 100px 350px 250px;
         background: #000;
@@ -1384,8 +1544,14 @@
                 border: 2px solid transparent;
                 padding-top: 30px;
                 padding-right: 95px;
-                a {padding: 10px; color: #E5E5E5; text-decoration: underline #CEA572 1px; border: 2px solid transparent; border-spacing: 0px;}
-                a:hover { color: #CEA572; text-decoration: none; border: 2px solid #CEA572;  }     
+                a {padding: 10px 0; color: #E5E5E5; text-decoration: none; border: 2px solid transparent; border-spacing: 0px; border-bottom: 1px solid #CEA572;}
+                a:hover { color: #CEA572; text-decoration: none; border: 2px solid #CEA572;} 
+                .index-column-1__links_1 {
+                    margin-right: 20px;
+                }
+                .index-column-1__links_2 {
+                    margin-right: 20px;
+                } 
             }
         }
         .index-column-2 {
@@ -1459,7 +1625,7 @@
         display: none;
     }
         
-    .learningNav {
+    .learning {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
@@ -1479,180 +1645,92 @@
             width: 420px;
             height: 420px;
         }
-        .learningNavPhotos {
+        a { text-decoration: none; color: #000;}
+        .learning__photo {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            .LearningLinks {
+            .learning__photo_link {
                 position: absolute;
                 font-size: 36px;
                 font-family: 'Palace Of Sports';
                 text-align: center;
                 color: #CEA572;
-                a:link { text-decoration: none; color: #CEA572;}
             }
         }
     }
 
-    ._newsAll {
-        background-color: #312D2E;
-        ._news {
+    .news {
+        background-color: #fff;
+        display: grid;
+        grid-template-rows: 200px auto 110px;
+        justify-content: center;
+        font-family: Montserrat;
+        font-size: 14px;
+        color: #000;
+        .news__text {
+            font-size: 90px;
+            font-family: 'Palace Of Sports';
+            color: #CEA572;
+            grid-row: 1;
+            text-align: left;
+            align-items: center;
+            display: flex;
+            justify-content: left;
+        }
+        .news-trumb-lines {
             display: grid;
-            grid-template-rows: 200px auto 110px;
+            grid-template-columns: repeat(3, 400px);
+            grid-column-gap: 20px;
+            grid-template-rows: repeat(2, auto);
+            grid-row-gap: 60px;
+            grid-column-gap: 20px;
             justify-content: center;
-            font-family: Montserrat;
-            font-size: 14px;
-            color: #fff;
-            ._newsText {
-                font-size: 90px;
-                font-family: 'Palace Of Sports';
-                color: #CEA572;
-                grid-row: 1;
-                text-align: left;
-                align-items: center;
-                display: flex;
-                justify-content: left;
-            }
-            ._newsTrumbLines {
-                display: grid;
-                grid-template-columns: repeat(3, 400px);
-                grid-column-gap: 20px;
-                grid-template-rows: repeat(2, auto);
-                grid-row-gap: 60px;
-                grid-column-gap: 20px;
-                justify-content: center;
-                width: 80%;
-                margin-left: 10%;
-                ._newsBox {
-                    display: block;
-                    position: relative;
-                    border-bottom: 1px solid #BE9C6C;
-                    padding: 0 0 20px 0;
-                    ._newsDate {
-                        position: absolute;
-                        text-transform: uppercase;
-                        font-family: 'Palace Of Sports';
-                        font-size: 34px;
-                        position: absolute;
-                        top: -25px;
-                        ._newsDateWhite {
-                            color: #fff;
-                        }
-                        ._newsDateYellow {
-                            color: #CEA572;
-                        }
+            width: 80%;
+            margin-left: 10%;
+            .news-box {
+                display: block;
+                position: relative;
+                border-bottom: 1px solid #BE9C6C;
+                padding: 0 0 20px 0;
+                .news-box__date {
+                    position: absolute;
+                    text-transform: uppercase;
+                    font-family: 'Palace Of Sports';
+                    font-size: 34px;
+                    position: absolute;
+                    top: -25px;
+                    .news-box__date_black {
+                        color: #000;
                     }
-                    ._newsPhoto {
-                        img {
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-                    ._newsText2 {
-                        a {color: #fff; text-decoration: none;}
+                    .news-box__date_yellow {
+                        color: #CEA572;
                     }
                 }
-                
+                .news-box__photo {
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .news-box__text {
+                    a {color: #000; text-decoration: none;}
+                }
             }
-            ._newsLink {
-                grid-row: 3;
-                text-align: right;
-                align-items: center;
-                display: flex;
-                justify-content: right;
-                a {font-size: 28px; font-family: 'Palace Of Sports'; color: #CEA572;}
-            }
+            
+        }
+        .news__bottom-link {
+            grid-row: 3;
+            text-align: right;
+            align-items: center;
+            display: flex;
+            justify-content: right;
+            a {font-size: 28px; font-family: 'Palace Of Sports'; color: #CEA572;}
         }
     }
 
-    .facts {
-        font-size: 16px;
-        font-family: Montserrat;
-        font-style: normal;
-        font-weight: normal;
-        color: #000;
-        position: relative;
-        height: 1250px;
-        margin: 0;
-        padding: 0;
-        text-align: left;
-        img {
-            width: 75%;
-            height: 75%;
-        }
-        .omText {
-            font-size: 70px;
-            position: absolute;
-            font-family: 'Palace Of Sports';
-            left: 140px;
-            color: #CEA572;
-        }
-        .lorem1 {
-            position: absolute; 
-            width: 590px;
-            top: 160px;
-            left: 140px;
-            font-size: 18px;
-        }
-        .omp1 {
-            position: absolute;
-            top: 130px;
-            right: 50px;
-        }
-        .omp2 {
-            position: absolute;
-            left: 140px;
-            top: 360px;
-        }
-        .omp3 {
-            position: absolute;
-            left: 10px;
-            top: 620px;
-        }
-        .omp4 {
-            position: absolute;
-            right: 0px;
-            top: 420px;
-        }
-        .omp5 {
-            position: absolute;
-            right: 70px;
-            top: 750px;
-        }
-        .omp6 {
-            position: absolute;
-            right: 80px;
-            top: 1010px;
-        }
-        .lorem2 {
-            position:absolute; 
-            text-align: right;
-            width: 250px; 
-            top: 400px; 
-            right:320px;
-        }
-        .lorem3 {
-            position:absolute; 
-            width: 470px; 
-            left: 500px;
-            top: 710px;
-        }
-        .lorem4 {
-            position:absolute; 
-            width: 470px; 
-            left: 500px;
-            top: 870px;
-        }
-        .lorem5 {
-            position:absolute;
-            text-align: right; 
-            width: 380px; 
-            left: 100px;
-            top: 1000px;
-        } 
-    }
-    .famousGraduates {
+    .famous-graduates {
         display: flex;
         flex-direction: column;
         grid-row-gap: 50px;
@@ -1664,20 +1742,20 @@
             width: 100%;
             height: 100%;
         }
-        .fgText {
+        .famous-graduates__text_1 {
             font-family: "Palace Of Sports";
             color: #fff;
             font-size: 50px;
             text-align: center;
         }
-        .graduatesText {
+        .famous-graduates__text_2 {
             color: #CEA572;
             display: flex;
             text-align: center;
             font-size: 16px;
             max-width: 50%;
         }
-        .famousGraduatesPhotos {
+        .famous-graduates__photos {
             display: grid;
             max-width: 80%;
             grid-template-columns: repeat(5, 1fr);
@@ -1685,41 +1763,158 @@
             justify-items: center;
             grid-column-gap: 15px;
             color: #E5E5E5;
-            .fg1 {
+            .famous-graduates__photo_1 {
                 grid-column: 1;
                 grid-row: 1;
-                .fg1_name {text-align: left; grid-row: 2;}
-                .fg1_year {text-align: right;}
+                .famous-graduates__photo_name-1 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-1 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg2 {
+            .famous-graduates__photo_2 {
                 grid-column: 2;
                 grid-row: 2;
-                .fg2_name {text-align: left; grid-row: 2;}
-                .fg2_year {text-align: right;}
+                .famous-graduates__photo_name-2 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-2 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg3 {
+            .famous-graduates__photo_3 {
                 grid-column: 3;
                 grid-row: 1;
-                .fg3_name {text-align: left; grid-row: 2;}
-                .fg3_year {text-align: right;}
+                .famous-graduates__photo_name-3 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-3 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg4 {
+            .famous-graduates__photo_4 {
                 grid-column: 4;
                 grid-row: 2;
-                .fg4_name {text-align: left; grid-row: 2;}
-                .fg4_year {text-align: right;}
+                .famous-graduates__photo_name-4 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-4 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg5 {
+            .famous-graduates__photo_5 {
                 grid-column: 5;
                 grid-row: 1;
-                .fg5_name {text-align: left; grid-row: 2;}
-                .fg5_year {text-align: right;}
+                .famous-graduates__photo_name-5 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-5 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
         }
-        .fgBottom {        
+        .famous-graduates__link {        
             align-items: top;
             margin: 50px 0;
-        
+            font-size: 22px; 
+            font-family: 'Palace Of Sports';
+            a {color: #CEA572; }
         }
     }
     .bottom {
@@ -1729,29 +1924,74 @@
         display: grid;
         grid-template-rows: auto auto 50px;
         justify-content: center;
-        .bottomLogos {
+        .bottom-logos {
             padding-top: 40px;
             padding-bottom: 40px;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-column-gap: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             align-items: center;
-            .bl1 {grid-column: 1;}
-            .bl2 {grid-column: 2;}
-            .bl3 {grid-column: 3;}
-            .bl4 {grid-column: 4;}
-            .bl5 {grid-column: 5;}
+            img {
+                width: 162px;
+                height: 48px;
+            }
         }
-        .bottomFrame {
+        .bottom-text {
             grid-row: 2;
             padding-bottom: 20px;
             margin-bottom: 50px;
-            max-width: 800px;
+            width: 606px;
+            height: 472px;
             text-align: center;
             display: flex;
+            justify-content: center;
+            justify-items: center;
+            flex-direction: column;
             margin: 0 auto;
             border: 1px solid #58595B;
             box-sizing: border-box;
+            .bottom-text_gold {
+                color: #CEA572; 
+                text-align: center; 
+                font-family: 'Palace Of Sports';
+                font-size: 22px;
+                line-height: 22px;
+                text-transform: uppercase;
+            }
+            .bottom-text_bold {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 155.9%;
+            }
+            .bottom-text_info {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 155.9%;
+            }
+            .bottom-text_gold-2 {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 155.9%;
+                color: #CEA572;
+            }
+            a {color: #CEA572;}
+            .bottom-text_bottom {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 155.9%;
+                width: 56%;
+                text-align: center;
+                position: relative;
+                left: 22%;
+            }
         } 
     }
     footer {
@@ -1769,79 +2009,80 @@
         font-size: 14px;
         text-align: center;
         background-color: #231F20;
+        line-height: 155.9%;
         color: #fff;
         align-items: center;
         align-content: center;
         justify-items: left;
         justify-content: center;
-        .fAddress1 {
+        .footer__address {
             grid-column: 1;
             grid-row: 1;
             color: #CEA572;
         }
-        .fAddress2 {
+        .footer__address_2 {
             grid-column-start: 2;
             grid-column-end: 5;
             grid-row: 1;
             color: #fff;
         }
-        .grap1 {
+        .footer__grap {
             grid-column: 5;
             grid-row: 1;
             color: #CEA572;
         }
-        .grap2 {
+        .footer__grap_2 {
             grid-column: 6;
             grid-row: 1;
             color: #fff;
         }
-        .pressS {
+        .footer__press {
             grid-column: 7;
             grid-row: 1;
             a {color: #CEA572;}
         }
-        .vuh1 {
+        .footer__output {
             grid-column: 5;
             grid-row: 2;
             color: #CEA572;
         }
-        .vuh2 {
+        .footer__output_2 {
             grid-column: 6;
             grid-row: 2;
             color: #fff;
         }
-        .phone1 {
+        .footer__phone {
             grid-column: 1;
             grid-row: 2;
             color: #CEA572;
         }
-        .phone2 {
+        .footer__phone_2 {
             grid-column: 2;
             grid-row: 2;
             color: #fff;
         }
-        .fax1 {
+        .footer__fax {
             grid-column: 3;
             grid-row: 2;
             color: #CEA572;
         }
-        .fax2 {
+        .footer__fax_2 {
             grid-column: 4;
             grid-row: 2;
             color: #fff;
         }
-        .mail1 {
+        .footer__mail {
             grid-column: 1;
             grid-row: 3;
             color: #CEA572;
         }
-        .mail2 {
+        .footer__mail_2 {
             grid-column: 2;
             grid-row: 3;
             color: #fff;
             a {color: #fff;}
         }
-        .offSite {
+        .footer__offsite {
             grid-column-start: 1;
             grid-column-end: 4;
             grid-row: 4;
@@ -1851,53 +2092,57 @@
             text-align: left;
             a {color: #CEA572;}
         }
-        .busGov {
+        .footer__bus-gov {
             grid-column: 4;
             grid-row: 4;
             font-size: 12px;
             justify-self: right;
             a {color: #CEA572;}
         }
-        .mark {
+        .footer__mark {
             grid-column: 5;
             grid-row: 4;
             font-size: 12px;
             a {color: #CEA572;}
         }
-        .footerLogo {
+        .footer__logo_photo {
             grid-column: 1;
             grid-row-start: 5;
             grid-row-end: 8;
+            img {
+                width: 47px;
+                height: 46px;
+            }
         }
-        .flt1 {
+        .footer__logo_text-1 {
             grid-column-start: 2;
             grid-column-end: 5;
             grid-row: 5;
             font-size: 11px;
             text-align: left;
         }
-        .flt2 {
+        .footer__logo_text-2 {
             grid-column-start: 2;
             grid-column-end: 5;
             grid-row: 6;
             font-size: 11px;
             text-align: left;
         }
-        .flt3 {
+        .footer__logo_text-3 {
             grid-column-start: 2;
             grid-column-end: 5;
             grid-row: 7;
             font-size: 11px;
             text-align: left;
         }
-        .minKult {
+        .footer__min-kult {
             grid-column-start: 5;
             grid-column-end: 7;
             grid-row: 6;
             font-size: 12px;
             a { color: #CEA572;}
         }
-        .site{
+        .footer__rus-center {
             grid-column: 8;
             grid-row: 6;
             color: #5F6164;
@@ -2131,14 +2376,13 @@
 
     nav {
         display: grid;
-        grid-template-columns: 80px 46%;
+        grid-template-columns: 80px 46% auto;
         margin: 0 auto;
         width: 100%;
         position: fixed;
         top: 0px;
         left: 0px;
-        height: 18%;
-        min-height: 135px;
+        height: 135px;
         z-index: 100;
         opacity: 0.9;
         filter: alpha(Opacity=90);
@@ -2217,7 +2461,7 @@
             .nav-second-сolumn-first-string {
                 grid-row: 1;
                 display: inline-grid;
-                grid-template-columns: 2fr 1fr 1fr;
+                grid-template-columns: 2fr 110px;
                 align-items: center;
                 justify-content: center;
                 justify-items: center;
@@ -2226,15 +2470,17 @@
                     white-space: nowrap;
                     grid-row: 1;
                     grid-column: 1;
+                    font-size: 10px;
                 }
                 .nav-second-сolumn-first-string__social-medias {
-                    display: inline-flex;
-                    justify-content: space-between;
+                    display: flex;
+                    justify-content: space-around;
+                    flex-wrap: nowrap;
                     grid-row: 1;
                     grid-column: 2;
                     img {
-                        width: 25px;
-                        height: 25px;
+                        width: 15px;
+                        height: 15px;
                     }
                 }
                 .nav-second-сolumn-first-string__phone-number {
@@ -2277,20 +2523,19 @@
                     position: absolute; 
                     top: 0;
                     left: 16px;
-                    width: 250px;
+                    width: 220px;
                 }
                 .nav-second-сolumn-second-string__search button {
-                    position: absolute; 
-                    bottom: 1px;
+                    position: absolute;
                     left: 0px;
-                    height: 16px;
-                    width: 16px;
+                    height: 19px;
+                    width: 19px;
                     background: url('../img/search.png') no-repeat;
                     border: none;
                     cursor: pointer;
                     border-bottom: 1px solid #58595B;
                 }
-                .nav-second-сolumn-second-string__blindness {
+                .nav__blindness {
                     grid-row: 2;
                     grid-column-start: 2;
                     grid-column-end: 3;
@@ -2298,21 +2543,62 @@
                     justify-content: right;
                     justify-items: right;
                     display: inline-flex;
-                    .nav-second-сolumn-second-string__blindness-text {
-                        color: #CEA572;
-                        margin-bottom: 3px;
-                    }
-                    .nav-second-сolumn-second-string__blindness-logo {
+                    .nav__blindness_logo {
+                        width: 32px;
+                        height: 22px;
                         padding-right: 10px;
-                        img {
-                            width: 32px;
-                        }
+                        background: transparent;
+                        background-image: src="./img/blindness.png";
+                        border: 0;
+                        cursor: pointer;
                     }
+                    .nav__blindness_text {
+                        color: #CEA572;
+                        background: transparent;
+                        font-size: 14px;
+                        margin-bottom: 0px;
+                        border: 0;
+                        padding-left: 15px;
+                        cursor: pointer;
+                    }
+
                 }
             
             }
             
         }
+    }
+    nav.scroll {
+        z-index: 100;
+        opacity: 0.9;
+        filter: alpha(Opacity=90);
+        background-color: #000;
+        min-height: 100px;
+        max-height: 100px;      
+        .nav-logo-column {
+            .brand-logo {
+                img {
+                    width: 56px;
+                    height: 74px;
+                }
+            }
+        }
+        .nav-first-сolumn {
+            color: #58595B;
+            flex-shrink: 2;
+            display: grid;
+            grid-template-rows: repeat(3, 30px);
+            grid-row-gap: 3px;
+        }
+        .nav-second-сolumn {
+            grid-column-start: 3;
+            grid-column-end: 3;
+            display: grid;
+            grid-row-gap: 15px;
+            grid-template-rows: repeat(2,30px);
+            padding-top: 15px;
+        }
+
     }
     .nav-mini {
         display: none;
@@ -2322,7 +2608,6 @@
         min-width: 100%;
         position: relative;
         display: grid;
-        
         grid-template-columns: 3fr 1fr 1fr;
         grid-template-rows: 100px 350px 250px;
         background: #000;
@@ -2353,8 +2638,14 @@
                 border: 2px solid transparent;
                 padding-top: 30px;
                 padding-right: 95px;
-                a {padding: 10px; color: #E5E5E5; text-decoration: underline #CEA572 1px; border: 2px solid transparent; border-spacing: 0px;}
-                a:hover { color: #CEA572; text-decoration: none; border: 2px solid #CEA572;  }     
+                a {padding: 10px 0; color: #E5E5E5; text-decoration: none; border: 2px solid transparent; border-spacing: 0px; border-bottom: 1px solid #CEA572;}
+                a:hover { color: #CEA572; text-decoration: none; border: 2px solid #CEA572;} 
+                .index-column-1__links_1 {
+                    margin-right: 20px;
+                }
+                .index-column-1__links_2 {
+                    margin-right: 20px;
+                } 
             }
         }
         .index-column-2 {
@@ -2428,7 +2719,7 @@
         display: none;
     }
 
-    .learningNav {
+    .learning {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
@@ -2448,180 +2739,92 @@
             width: 312px;
             height: 312px;
         }
-        .learningNavPhotos {
+        a { text-decoration: none; color: #000;}
+        .learning__photo {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            .LearningLinks {
+            .learning__photo_link {
                 position: absolute;
                 font-size: 32px;
                 font-family: 'Palace Of Sports';
                 text-align: center;
                 color: #CEA572;
-                a:link { text-decoration: none; color: #CEA572;}
             }
         }
     }
 
-    ._newsAll {
-        background-color: #312D2E;
-        ._news {
+    .news {
+        display: grid;
+        grid-template-rows: 200px auto 110px;
+        justify-content: center;
+        font-family: Montserrat;
+        font-size: 14px;
+        color: #000;
+        background-color: #fff;
+        .news__text {
+            font-size: 90px;
+            font-family: 'Palace Of Sports';
+            color: #CEA572;
+            grid-row: 1;
+            text-align: left;
+            align-items: center;
+            display: flex;
+            justify-content: left;
+        }
+        .news-trumb-lines {
             display: grid;
-            grid-template-rows: 200px auto 110px;
+            grid-template-columns: repeat(3, 300px);
+            grid-column-gap: 20px;
+            grid-template-rows: repeat(2, auto);
+            grid-row-gap: 50px;
+            grid-column-gap: 20px;
             justify-content: center;
-            font-family: Montserrat;
-            font-size: 14px;
-            color: #fff;
-            ._newsText {
-                font-size: 90px;
-                font-family: 'Palace Of Sports';
-                color: #CEA572;
-                grid-row: 1;
-                text-align: left;
-                align-items: center;
-                display: flex;
-                justify-content: left;
-            }
-            ._newsTrumbLines {
-                display: grid;
-                grid-template-columns: repeat(3, 300px);
-                grid-column-gap: 20px;
-                grid-template-rows: repeat(2, auto);
-                grid-row-gap: 50px;
-                grid-column-gap: 20px;
-                justify-content: center;
-                width: 80%;
-                margin-left: 10%;
-                ._newsBox {
-                    display: block;
-                    position: relative;
-                    border-bottom: 1px solid #BE9C6C;
-                    padding: 0 0 20px 0;
-                    ._newsDate {
-                        position: absolute;
-                        text-transform: uppercase;
-                        font-family: 'Palace Of Sports';
-                        font-size: 34px;
-                        position: absolute;
-                        top: -25px;
-                        ._newsDateWhite {
-                            color: #fff;
-                        }
-                        ._newsDateYellow {
-                            color: #CEA572;
-                        }
+            width: 80%;
+            margin-left: 10%;
+            .news-box {
+                display: block;
+                position: relative;
+                border-bottom: 1px solid #BE9C6C;
+                padding: 0 0 20px 0;
+                .news-box__date {
+                    position: absolute;
+                    text-transform: uppercase;
+                    font-family: 'Palace Of Sports';
+                    font-size: 34px;
+                    position: absolute;
+                    top: -25px;
+                    .news-box__date_black {
+                        color: #000;
                     }
-                    ._newsPhoto {
-                        img {
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-                    ._newsText2 {
-                        a {color: #fff; text-decoration: none;}
+                    .news-box__date_yellow {
+                        color: #CEA572;
                     }
                 }
-                
+                .news-box__photo {
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .news-box__text {
+                    a {color: #000; text-decoration: none;}
+                }
             }
-            ._newsLink {
-                grid-row: 3;
-                text-align: right;
-                align-items: center;
-                display: flex;
-                justify-content: right;
-                a {font-size: 28px; font-family: 'Palace Of Sports'; color: #CEA572;}
-            }
+            
+        }
+        .news__bottom-link {
+            grid-row: 3;
+            text-align: right;
+            align-items: center;
+            display: flex;
+            justify-content: right;
+            a {font-size: 28px; font-family: 'Palace Of Sports'; color: #CEA572;}
         }
     }
 
-    .facts {
-        font-size: 16px;
-        font-family: Montserrat;
-        font-style: normal;
-        font-weight: normal;
-        color: #000;
-        position: relative;
-        height: 1250px;
-        margin: 0;
-        padding: 0;
-        text-align: left;
-        img {
-            width: 75%;
-            height: 75%;
-        }
-        .omText {
-            font-size: 70px;
-            position: absolute;
-            font-family: 'Palace Of Sports';
-            left: 140px;
-            color: #CEA572;
-        }
-        .lorem1 {
-            position: absolute; 
-            width: 590px;
-            top: 160px;
-            left: 140px;
-            font-size: 18px;
-        }
-        .omp1 {
-            position: absolute;
-            top: 130px;
-            right: 50px;
-        }
-        .omp2 {
-            position: absolute;
-            left: 140px;
-            top: 360px;
-        }
-        .omp3 {
-            position: absolute;
-            left: 10px;
-            top: 620px;
-        }
-        .omp4 {
-            position: absolute;
-            right: 0px;
-            top: 420px;
-        }
-        .omp5 {
-            position: absolute;
-            right: 70px;
-            top: 750px;
-        }
-        .omp6 {
-            position: absolute;
-            right: 80px;
-            top: 1010px;
-        }
-        .lorem2 {
-            position:absolute; 
-            text-align: right;
-            width: 250px; 
-            top: 400px; 
-            right:320px;
-        }
-        .lorem3 {
-            position:absolute; 
-            width: 470px; 
-            left: 500px;
-            top: 710px;
-        }
-        .lorem4 {
-            position:absolute; 
-            width: 470px; 
-            left: 500px;
-            top: 870px;
-        }
-        .lorem5 {
-            position:absolute;
-            text-align: right; 
-            width: 380px; 
-            left: 100px;
-            top: 1000px;
-        } 
-    }
-    .famousGraduates {
+    .famous-graduates {
         display: flex;
         flex-direction: column;
         grid-row-gap: 50px;
@@ -2633,20 +2836,20 @@
             width: 100%;
             height: 100%;
         }
-        .fgText {
+        .famous-graduates__text_1 {
             font-family: "Palace Of Sports";
             color: #fff;
             font-size: 50px;
             text-align: center;
         }
-        .graduatesText {
+        .famous-graduates__text_2 {
             color: #CEA572;
             display: flex;
             text-align: center;
             font-size: 16px;
             max-width: 50%;
         }
-        .famousGraduatesPhotos {
+        .famous-graduates__photos {
             display: grid;
             max-width: 80%;
             grid-template-columns: repeat(5, 1fr);
@@ -2654,40 +2857,158 @@
             justify-items: center;
             grid-column-gap: 15px;
             color: #E5E5E5;
-            .fg1 {
+            .famous-graduates__photo_1 {
                 grid-column: 1;
                 grid-row: 1;
-                .fg1_name {text-align: left; grid-row: 2;}
-                .fg1_year {text-align: right;}
+                .famous-graduates__photo_name-1 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-1 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg2 {
+            .famous-graduates__photo_2 {
                 grid-column: 2;
                 grid-row: 2;
-                .fg2_name {text-align: left; grid-row: 2;}
-                .fg2_year {text-align: right;}
+                .famous-graduates__photo_name-2 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-2 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg3 {
+            .famous-graduates__photo_3 {
                 grid-column: 3;
                 grid-row: 1;
-                .fg3_name {text-align: left; grid-row: 2;}
-                .fg3_year {text-align: right;}
+                .famous-graduates__photo_name-3 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-3 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg4 {
+            .famous-graduates__photo_4 {
                 grid-column: 4;
                 grid-row: 2;
-                .fg4_name {text-align: left; grid-row: 2;}
-                .fg4_year {text-align: right;}
+                .famous-graduates__photo_name-4 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-4 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg5 {
+            .famous-graduates__photo_5 {
                 grid-column: 5;
                 grid-row: 1;
-                .fg5_name {text-align: left; grid-row: 2;}
-                .fg5_year {text-align: right;}
+                .famous-graduates__photo_name-5 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-5 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
         }
-        .fgBottom {        
+        .famous-graduates__link {        
             align-items: top;
-            margin: 0 0 50px 0;        
+            margin: 50px 0;
+            font-size: 22px; 
+            font-family: 'Palace Of Sports';
+            a {color: #CEA572; }
         }
     }
     .bottom {
@@ -2697,29 +3018,74 @@
         display: grid;
         grid-template-rows: auto auto 50px;
         justify-content: center;
-        .bottomLogos {
+        .bottom-logos {
             padding-top: 40px;
             padding-bottom: 40px;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-column-gap: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             align-items: center;
-            .bl1 {grid-column: 1;}
-            .bl2 {grid-column: 2;}
-            .bl3 {grid-column: 3;}
-            .bl4 {grid-column: 4;}
-            .bl5 {grid-column: 5;}
+            img {
+                width: 162px;
+                height: 48px;
+            }
         }
-        .bottomFrame {
+        .bottom-text {
             grid-row: 2;
             padding-bottom: 20px;
             margin-bottom: 50px;
-            max-width: 800px;
+            width: 606px;
+            height: 472px;
             text-align: center;
             display: flex;
+            justify-content: center;
+            justify-items: center;
+            flex-direction: column;
             margin: 0 auto;
             border: 1px solid #58595B;
             box-sizing: border-box;
+            .bottom-text_gold {
+                color: #CEA572; 
+                text-align: center; 
+                font-family: 'Palace Of Sports';
+                font-size: 22px;
+                line-height: 22px;
+                text-transform: uppercase;
+            }
+            .bottom-text_bold {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 155.9%;
+            }
+            .bottom-text_info {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 155.9%;
+            }
+            .bottom-text_gold-2 {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 155.9%;
+                color: #CEA572;
+            }
+            a {color: #CEA572;}
+            .bottom-text_bottom {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 155.9%;
+                width: 56%;
+                text-align: center;
+                position: relative;
+                left: 22%;
+            }
         } 
     }
     footer {
@@ -2736,79 +3102,80 @@
         font-family: Montserrat;
         text-align: center;
         background-color: #231F20;
+        line-height: 155.9%;
         color: #fff;
         align-items: center;
         align-content: center;
         justify-items: left;
         justify-content: center;
-        .fAddress1 {
+        .footer__address {
             grid-column: 1;
             grid-row: 1;
             color: #CEA572;
         }
-        .fAddress2 {
+        .footer__address_2 {
             grid-column-start: 2;
             grid-column-end: 5;
             grid-row: 1;
             color: #fff;
         }
-        .grap1 {
+        .footer__grap {
             grid-column: 5;
             grid-row: 1;
             color: #CEA572;
         }
-        .grap2 {
+        .footer__grap_2 {
             grid-column: 6;
             grid-row: 1;
             color: #fff;
         }
-        .pressS {
+        .footer__press {
             grid-column: 7;
             grid-row: 1;
             a {color: #CEA572;}
         }
-        .vuh1 {
+        .footer__output {
             grid-column: 5;
             grid-row: 2;
             color: #CEA572;
         }
-        .vuh2 {
+        .footer__output_2 {
             grid-column: 6;
             grid-row: 2;
             color: #fff;
         }
-        .phone1 {
+        .footer__phone {
             grid-column: 1;
             grid-row: 2;
             color: #CEA572;
         }
-        .phone2 {
+        .footer__phone_2 {
             grid-column: 2;
             grid-row: 2;
             color: #fff;
         }
-        .fax1 {
+        .footer__fax {
             grid-column: 3;
             grid-row: 2;
             color: #CEA572;
         }
-        .fax2 {
+        .footer__fax_2 {
             grid-column: 4;
             grid-row: 2;
             color: #fff;
         }
-        .mail1 {
+        .footer__mail {
             grid-column: 1;
             grid-row: 3;
             color: #CEA572;
         }
-        .mail2 {
+        .footer__mail_2 {
             grid-column: 2;
             grid-row: 3;
             color: #fff;
             a {color: #fff;}
         }
-        .offSite {
+        .footer__offsite {
             grid-column-start: 1;
             grid-column-end: 4;
             grid-row: 4;
@@ -2818,53 +3185,57 @@
             text-align: left;
             a {color: #CEA572;}
         }
-        .busGov {
+        .footer__bus-gov {
             grid-column: 4;
             grid-row: 4;
             font-size: 12px;
             justify-self: right;
             a {color: #CEA572;}
         }
-        .mark {
+        .footer__mark {
             grid-column: 5;
             grid-row: 4;
             font-size: 12px;
             a {color: #CEA572;}
         }
-        .footerLogo {
+        .footer__logo_photo {
             grid-column: 1;
             grid-row-start: 5;
             grid-row-end: 8;
+            img {
+                width: 47px;
+                height: 46px;
+            }
         }
-        .flt1 {
+        .footer__logo_text-1 {
             grid-column-start: 2;
             grid-column-end: 5;
             grid-row: 5;
             font-size: 9px;
             text-align: left;
         }
-        .flt2 {
+        .footer__logo_text-2 {
             grid-column-start: 2;
             grid-column-end: 5;
             grid-row: 6;
             font-size: 9px;
             text-align: left;
         }
-        .flt3 {
+        .footer__logo_text-3 {
             grid-column-start: 2;
             grid-column-end: 5;
             grid-row: 7;
             font-size: 9px;
             text-align: left;
         }
-        .minKult {
+        .footer__min-kult {
             grid-column-start: 5;
             grid-column-end: 7;
             grid-row: 6;
             font-size: 12px;
             a { color: #CEA572;}
         }
-        .site{
+        .footer__rus-center {
             grid-column: 8;
             grid-row: 6;
             color: #5F6164;
@@ -3087,6 +3458,9 @@
         margin: 0;
         font-family: Montserrat;
     }
+    body.lock {
+        overflow: hidden;
+    }
     h2 {
         font-family: 'Palace Of Sports';
         font-style: normal;
@@ -3106,31 +3480,125 @@
         display: none;
     }
     .nav-mini {
-        display: grid;
-        grid-template-columns: repeat(3, 33.3333%);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         margin: 0 auto;
         width: 100%;
         position: fixed;
         top: 0px;
         left: 0px;
-        min-height: 100px;
+        height: 60px;
+
+        color: #CEA572;
+
         z-index: 100;
         opacity: 0.9;
         filter: alpha(Opacity=90);
-        color: #CEA572;
         font-family: Montserrat;
         font-style: normal;
         font-weight: normal;
         font-size: 11px;
-        .nav-mini__logo-column {
-            img {height: 70px; width: auto;}
+        .nav-mini__body {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            height: 60px;
+            align-items: center;
+            width: 100%;
+            .nav-mini__logo {
+                padding-top: 5px;
+                padding-left: 20px;
+                z-index: 3;
+                img {height: 50px; width: auto;}
+            }
+            .nav-mini__phone {
+                justify-content: right;
+                display: flex;
+                align-items: center;
+                font-size: 16px;
+                line-height: 20px;
+                text-decoration: underline;
+                z-index: 3;
+            }
+
+
+            .nav-mini__burger {
+                display: block;
+                position: relative;
+                width: 30px;
+                height: 30px;
+                z-index: 3;
+                margin-right: 20px;
+                span {
+                    position: absolute;
+                    height: 3px;
+                    background-color: #CEA572;
+                    left: 0px;
+                    width: 100%;
+                    top: 13px;
+                }
+            }
+            .nav-mini__burger::before {
+                content: '';
+                top: 0;
+                position: absolute;
+                height: 3px;
+                background-color: #cea572;
+                width: 100%;
+                transition: all 0.3s ease 0s;
+            }
+            .nav-mini__burger::after {
+                content: '';
+                bottom: 1px;
+                position: absolute;
+                height: 3px;
+                background-color: #cea572;
+                width: 100%;
+                transition: all 0.3s ease 0s;
+            }
+            .nav-mini__burger.active::before {
+                transform: rotate(45deg);
+                top: 14px;
+            }
+            .nav-mini__burger.active::after {
+                transform: rotate(-45deg);
+                bottom: 13px;
+            }
+            .nav-mini__burger.active span {
+                transform: scale(0);
+            }
+
+
+            .nav-mini__menu {
+                position: fixed;
+                top: -100%;
+                left: 0px;
+                width: 100%;
+                height: 100%;
+                padding: 70px 10px 0px 10px;
+                color: #CEA572;
+                overflow: auto;
+                font-size: 18px;
+                .nav-mini__list {
+                    display: block;
+                    li {
+                        margin: 0px 0px 20px 0px;
+                        list-style: none;
+                        a {color: #fff; text-decoration: none;}
+                    }
+
+                }
+            }
+            .nav-mini__menu.active {
+                top: 0;
+                transition: all 0.3s ease 0s;
+                background: #000;
+            }
         }
-        .nav-mini__first-column {
-            justify-content: right;
-        }
-        .nav-mini__second-column {
-            justify-content: center;
-        }
+    }
+    .nav-mini.scroll {
+        background-color: #000;
     }
 
        
@@ -3263,7 +3731,7 @@
         }
     }
 
-    .learningNav {
+    .learning {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
@@ -3283,184 +3751,94 @@
             width: 400px;
             height: 400px;
         }
-        .learningNavPhotos {
+        a { text-decoration: none; color: #000;}
+        .learning__photo {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            .LearningLinks {
+            .learning__photo_link {
                 position: absolute;
                 font-size: 34px;
                 font-family: 'Palace Of Sports';
                 text-align: center;
                 color: #CEA572;
-                a:link { text-decoration: none; color: #CEA572;}
             }
         }
     }
 
-    ._newsAll {
-        background-color: #312D2E;
-        ._news {
+    .news {
+        display: grid;
+        grid-template-rows: 200px auto 110px;
+        justify-content: center;
+        font-family: Montserrat;
+        font-size: 14px;
+        color: #fff;
+        .news__text {
+            font-size: 90px;
+            font-family: 'Palace Of Sports';
+            color: #CEA572;
+            grid-row: 1;
+            text-align: left;
+            align-items: center;
+            display: flex;
+            justify-content: left;
+        }
+        .news-trumb-lines {
             display: grid;
-            grid-template-rows: 200px auto 110px;
+            grid-template-columns: repeat(2, 350px);
+            grid-column-gap: 20px;
+            grid-template-rows: repeat(2, auto);
+            grid-row-gap: 50px;
+            grid-column-gap: 20px;
             justify-content: center;
-            font-family: Montserrat;
-            font-size: 14px;
-            color: #fff;
-            ._newsText {
-                font-size: 90px;
-                font-family: 'Palace Of Sports';
-                color: #CEA572;
-                grid-row: 1;
-                text-align: left;
-                align-items: center;
-                display: flex;
-                justify-content: left;
-            }
-            ._newsTrumbLines {
-                display: grid;
-                grid-template-columns: repeat(2, 350px);
-                grid-column-gap: 20px;
-                grid-template-rows: repeat(2, auto);
-                grid-row-gap: 50px;
-                grid-column-gap: 20px;
-                justify-content: center;
-                width: 80%;
-                margin-left: 10%;
-                ._newsBox {
-                    display: block;
-                    position: relative;
-                    border-bottom: 1px solid #BE9C6C;
-                    padding: 0 0 20px 0;
-                    ._newsDate {
-                        position: absolute;
-                        text-transform: uppercase;
-                        font-family: 'Palace Of Sports';
-                        font-size: 34px;
-                        position: absolute;
-                        top: -25px;
-                        ._newsDateWhite {
-                            color: #fff;
-                        }
-                        ._newsDateYellow {
-                            color: #CEA572;
-                        }
+            width: 80%;
+            margin-left: 10%;
+            .news-box {
+                display: block;
+                position: relative;
+                border-bottom: 1px solid #BE9C6C;
+                padding: 0 0 20px 0;
+                .news-box__date {
+                    position: absolute;
+                    text-transform: uppercase;
+                    font-family: 'Palace Of Sports';
+                    font-size: 34px;
+                    position: absolute;
+                    top: -25px;
+                    .news-box__date_black {
+                        color: #000;
                     }
-                    ._newsPhoto {
-                        img {
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-                    ._newsText2 {
-                        a {color: #fff; text-decoration: none;}
+                    .news-box__date_yellow {
+                        color: #CEA572;
                     }
                 }
-                
+                .news-box__photo {
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .news-box__text {
+                    a {color: #000; text-decoration: none;}
+                }
             }
-            ._newsLink {
-                grid-row: 3;
-                text-align: right;
-                align-items: center;
-                display: flex;
-                justify-content: right;
-                a {font-size: 28px; font-family: 'Palace Of Sports'; color: #CEA572;}
-            }
+            
         }
-    }
-
-
-    .facts {
-        font-size: 16px;
-        font-family: Montserrat;
-        font-style: normal;
-        font-weight: normal;
-        color: #000;
-        position: relative;
-        height: 1250px;
-        margin: 0;
-        padding: 0;
-        text-align: left;
-        img {
-            width: 75%;
-            height: 75%;
-        }
-        .omText {
-            font-size: 70px;
-            position: absolute;
-            font-family: 'Palace Of Sports';
-            left: 140px;
-            color: #CEA572;
-        }
-        .lorem1 {
-            position: absolute; 
-            width: 590px;
-            top: 160px;
-            left: 140px;
-            font-size: 18px;
-        }
-        .omp1 {
-            position: absolute;
-            top: 130px;
-            right: 50px;
-        }
-        .omp2 {
-            position: absolute;
-            left: 140px;
-            top: 360px;
-        }
-        .omp3 {
-            position: absolute;
-            left: 10px;
-            top: 620px;
-        }
-        .omp4 {
-            position: absolute;
-            right: 0px;
-            top: 420px;
-        }
-        .omp5 {
-            position: absolute;
-            right: 70px;
-            top: 750px;
-        }
-        .omp6 {
-            position: absolute;
-            right: 80px;
-            top: 1010px;
-        }
-        .lorem2 {
-            position:absolute; 
+        .news__bottom-link {
+            grid-row: 3;
             text-align: right;
-            width: 250px; 
-            top: 400px; 
-            right:320px;
+            align-items: center;
+            display: flex;
+            justify-content: right;
+            a {font-size: 28px; font-family: 'Palace Of Sports'; color: #CEA572;}
         }
-        .lorem3 {
-            position:absolute; 
-            width: 470px; 
-            left: 500px;
-            top: 710px;
-        }
-        .lorem4 {
-            position:absolute; 
-            width: 470px; 
-            left: 500px;
-            top: 870px;
-        }
-        .lorem5 {
-            position:absolute;
-            text-align: right; 
-            width: 380px; 
-            left: 100px;
-            top: 1000px;
-        } 
     }
-    .famousGraduates {
+
+    .famous-graduates {
         display: flex;
         flex-direction: column;
-        grid-row-gap: 20px;
+        grid-row-gap: 50px;
         background-color: #000;
         align-items: center;
         justify-items: center;
@@ -3469,67 +3847,178 @@
             width: 100%;
             height: 100%;
         }
-        .fgText {
+        .famous-graduates__text_1 {
             font-family: "Palace Of Sports";
             color: #fff;
             font-size: 50px;
             text-align: center;
+            max-width: 80%;
         }
-        .graduatesText {
+        .famous-graduates__text_2 {
             color: #CEA572;
             display: flex;
             text-align: center;
             font-size: 16px;
-            min-width: 80%;
+            max-width: 70%;
         }
-        .famousGraduatesPhotos {
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: 50px auto 50px auto auto;
+        .famous-graduates__photos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            max-width: 95%;
             justify-items: center;
-            grid-column-gap: 5px;
-            grid-row-gap: 20px;
+            grid-column-gap: 15px;
             color: #E5E5E5;
-            .fg1 {
-                grid-column: 1;
-                grid-row: 1;
-                .fg1_name {text-align: left; font-size: 16px;}
-                .fg1_year {text-align: right; font-size: 16px;}
+            .famous-graduates__photo_1 {
+                margin: 20px 0;
+                .famous-graduates__photo_name-1 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-1 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg2 {
-                grid-column: 2;
-                grid-row: 2;
-                .fg2_name {text-align: left; font-size: 16px;}
-                .fg2_year {text-align: right; font-size: 16px;}
+            .famous-graduates__photo_2 {
+                margin: 20px 0;
+                .famous-graduates__photo_name-2 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-2 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg3 {
-                grid-column: 1;
-                grid-row: 3;
-                .fg3_name {text-align: left; font-size: 16px;}
-                .fg3_year {text-align: right; font-size: 16px;}
+            .famous-graduates__photo_3 {
+                margin: 20px 0;
+                .famous-graduates__photo_name-3 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-3 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg4 {
-                grid-column: 2;
-                grid-row: 4;
-                .fg4_name {text-align: left; font-size: 16px;}
-                .fg4_year {text-align: right; font-size: 16px;}
+            .famous-graduates__photo_4 {
+                margin: 20px 0;
+                .famous-graduates__photo_name-4 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-4 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg5 {
-                grid-column-start: 1;
-                grid-column-end: 3;
-                grid-row: 5;
-                .fg5_name {text-align: left; font-size: 16px;}
-                .fg5_year {text-align: right; font-size: 16px;}
+            .famous-graduates__photo_5 {
+                margin: 20px 0;
+                .famous-graduates__photo_name-5 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-5 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
         }
-        .fgBottom {        
+        .famous-graduates__link {        
             align-items: top;
             margin: 50px 0;
-        
+            font-size: 22px; 
+            font-family: 'Palace Of Sports';
+            a {color: #CEA572; }
         }
-    
     }
+
     .bottom {
         display: grid;
         align-items: center;
@@ -3537,179 +4026,256 @@
         display: grid;
         grid-template-rows: auto auto 50px;
         justify-content: center;
-        .bottomLogos {
+        .bottom-logos {
             padding-top: 40px;
             padding-bottom: 40px;
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            grid-column-gap: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             align-items: center;
-            .bl1 {grid-column: 1;}
-            .bl2 {grid-column: 2;}
-            .bl3 {grid-column: 3;}
-            .bl4 {grid-column: 4;}
-            .bl5 {grid-column: 5;}
+            img {
+                width: 162px;
+                height: 48px;
+            }
         }
-        .bottomFrame {
+        .bottom-text {
             grid-row: 2;
             padding-bottom: 20px;
             margin-bottom: 50px;
-            max-width: 800px;
+            width: 606px;
+            height: 472px;
             text-align: center;
             display: flex;
+            justify-content: center;
+            justify-items: center;
+            flex-direction: column;
             margin: 0 auto;
             border: 1px solid #58595B;
             box-sizing: border-box;
+            .bottom-text_gold {
+                color: #CEA572; 
+                text-align: center; 
+                font-family: 'Palace Of Sports';
+                font-size: 22px;
+                line-height: 22px;
+                text-transform: uppercase;
+            }
+            .bottom-text_bold {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 155.9%;
+            }
+            .bottom-text_info {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 155.9%;
+            }
+            .bottom-text_gold-2 {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 155.9%;
+                color: #CEA572;
+            }
+            a {color: #CEA572;}
+            .bottom-text_bottom {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 155.9%;
+                width: 56%;
+                text-align: center;
+                position: relative;
+                left: 22%;
+            }
         } 
     }
     footer {
         position: static;
-        padding-top: 30px;
+        padding-top: 10px;
         padding-bottom: 30px;
 
         display: grid;
-        grid-template-columns: 90px 120px 80px 140px 130px 300px 120px 190px;
-        grid-column-gap: 5px;
-        grid-template-rows: 30px 30px 30px 100px 18px 18px 18px;
-        grid-row-gap: 10px;
+        grid-template-columns: 110px 50px 180px;
+        grid-column-gap: 2px;
+        grid-template-rows: repeat(16, auto);
         
         font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
         font-size: 14px;
-        text-align: center;
+        line-height: 155.9%;
+        color: #E5E5E5;
         background-color: #231F20;
-        color: #fff;
-        align-items: center;
+        align-items: left;
         align-content: center;
         justify-items: left;
         justify-content: center;
-        .fAddress1 {
+        .footer__address {
             grid-column: 1;
             grid-row: 1;
             color: #CEA572;
+            text-align: left;
         }
-        .fAddress2 {
+        .footer__address_2 {
             grid-column-start: 2;
-            grid-column-end: 5;
+            grid-column-end: 4;
             grid-row: 1;
-            color: #fff;
+            text-align: left;
         }
-        .grap1 {
-            grid-column: 5;
-            grid-row: 1;
-            color: #CEA572;
-        }
-        .grap2 {
-            grid-column: 6;
-            grid-row: 1;
-            color: #fff;
-        }
-        .pressS {
-            grid-column: 7;
-            grid-row: 1;
-            a {color: #CEA572;}
-        }
-        .vuh1 {
-            grid-column: 5;
-            grid-row: 2;
-            color: #CEA572;
-        }
-        .vuh2 {
-            grid-column: 6;
-            grid-row: 2;
-            color: #fff;
-        }
-        .phone1 {
+        .footer__phone {
             grid-column: 1;
             grid-row: 2;
+            text-align: left;
             color: #CEA572;
         }
-        .phone2 {
-            grid-column: 2;
+        .footer__phone_2 {
+            grid-column-start: 2;
+            grid-column-end: 4;
             grid-row: 2;
-            color: #fff;
+            text-align: left;
         }
-        .fax1 {
-            grid-column: 3;
-            grid-row: 2;
-            color: #CEA572;
-        }
-        .fax2 {
-            grid-column: 4;
-            grid-row: 2;
-            color: #fff;
-        }
-        .mail1 {
+        .footer__fax {
             grid-column: 1;
             grid-row: 3;
             color: #CEA572;
+            text-align: left;
         }
-        .mail2 {
-            grid-column: 2;
+        .footer__fax_2 {
+            grid-column-start: 2;
+            grid-column-end: 4;
             grid-row: 3;
-            color: #fff;
-            a {color: #fff;}
+            text-align: left;
         }
-        .offSite {
-            grid-column-start: 1;
+        .footer__mail {
+            grid-column: 1;
+            grid-row: 4;
+            color: #CEA572;
+            text-align: left;
+        }
+        .footer__mail_2 {
+            grid-column-start: 2;
             grid-column-end: 4;
             grid-row: 4;
-            color: #CEA572;
-            font-size: 11px;
-            justify-self: left;
             text-align: left;
-            a {color: #CEA572;}
+            a {color: #fff;}
         }
-        .busGov {
-            grid-column: 4;
-            grid-row: 4;
-            font-size: 12px;
-            justify-self: right;
-            a {color: #CEA572;}
-        }
-        .mark {
-            grid-column: 5;
-            grid-row: 4;
-            font-size: 12px;
-            a {color: #CEA572;}
-        }
-        .footerLogo {
-            grid-column: 1;
-            grid-row-start: 5;
-            grid-row-end: 8;
-        }
-        .flt1 {
-            grid-column-start: 2;
-            grid-column-end: 5;
+        .footer__grap {
+            grid-column-start: 1;
+            grid-column-end: 2;
             grid-row: 5;
-            font-size: 11px;
+            color: #CEA572;
             text-align: left;
         }
-        .flt2 {
-            grid-column-start: 2;
-            grid-column-end: 5;
+        .footer__grap_2 {
+            grid-column: 3;
+            grid-row: 5;
+            text-align: left;
+        }
+        .footer__output {
+            grid-column-start: 1;
+            grid-column-end: 2;
             grid-row: 6;
-            font-size: 11px;
+            color: #CEA572;
             text-align: left;
         }
-        .flt3 {
-            grid-column-start: 2;
-            grid-column-end: 5;
+        .footer__output_2 {
+            grid-column: 3;
+            grid-row: 6;
+            text-align: left;
+        }
+        .footer__press {
+            grid-column-start: 1;
+            grid-column-end: 4;
             grid-row: 7;
-            font-size: 11px;
-            text-align: left;
+            text-align: center;
+            justify-self: center;
+            a {color: #CEA572;}
         }
-        .minKult {
-            grid-column-start: 5;
-            grid-column-end: 7;
-            grid-row: 6;
+        .footer__logo_photo {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 8;
+            text-align: center;
+            justify-self: center;
+            img {
+                width: 47px;
+                height: 46px;
+            }
+        }
+        .footer__logo_text-1 {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 9;
             font-size: 12px;
+            text-align: center;
+            justify-self: center;
+        }
+        .footer__logo_text-2 {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 10;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+        }
+        .footer__logo_text-3 {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 11;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+        }
+        .footer__min-kult {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 12;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
             a { color: #CEA572;}
         }
-        .site{
-            grid-column: 8;
-            grid-row: 6;
-            color: #5F6164;
+        .footer__offsite {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 13;
             font-size: 12px;
+            text-align: center;
+            justify-self: center;
+            a { color: #CEA572;}
+        }
+        .footer__bus-gov {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 14;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+            a { color: #CEA572;}
+        }
+        .footer__mark {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 15;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+            a { color: #CEA572;}
+        }
+        .footer__rus-center {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 16;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
             a {color: #5F6164;}
         }
         
@@ -3929,6 +4495,9 @@
         margin: 0;
         font-family: Montserrat;
     }
+    body.lock {
+        overflow: hidden;
+    }
     h2 {
         font-size: 75px;
     }
@@ -3937,31 +4506,125 @@
         display: none;
     }
     .nav-mini {
-        display: grid;
-        grid-template-columns: repeat(3, 33.3333%);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         margin: 0 auto;
         width: 100%;
         position: fixed;
         top: 0px;
         left: 0px;
-        min-height: 100px;
+        height: 60px;
+
+        color: #CEA572;
+
         z-index: 100;
         opacity: 0.9;
         filter: alpha(Opacity=90);
-        color: #CEA572;
         font-family: Montserrat;
         font-style: normal;
         font-weight: normal;
         font-size: 11px;
-        .nav-mini__logo-column {
-            img {height: 70px; width: auto;}
+        .nav-mini__body {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            height: 60px;
+            align-items: center;
+            width: 100%;
+            .nav-mini__logo {
+                padding-top: 5px;
+                padding-left: 20px;
+                z-index: 3;
+                img {height: 50px; width: auto;}
+            }
+            .nav-mini__phone {
+                justify-content: right;
+                display: flex;
+                align-items: center;
+                font-size: 16px;
+                line-height: 20px;
+                text-decoration: underline;
+                z-index: 3;
+            }
+
+
+            .nav-mini__burger {
+                display: block;
+                position: relative;
+                width: 30px;
+                height: 30px;
+                z-index: 3;
+                margin-right: 20px;
+                span {
+                    position: absolute;
+                    height: 3px;
+                    background-color: #CEA572;
+                    left: 0px;
+                    width: 100%;
+                    top: 13px;
+                }
+            }
+            .nav-mini__burger::before {
+                content: '';
+                top: 0;
+                position: absolute;
+                height: 3px;
+                background-color: #cea572;
+                width: 100%;
+                transition: all 0.3s ease 0s;
+            }
+            .nav-mini__burger::after {
+                content: '';
+                bottom: 1px;
+                position: absolute;
+                height: 3px;
+                background-color: #cea572;
+                width: 100%;
+                transition: all 0.3s ease 0s;
+            }
+            .nav-mini__burger.active::before {
+                transform: rotate(45deg);
+                top: 14px;
+            }
+            .nav-mini__burger.active::after {
+                transform: rotate(-45deg);
+                bottom: 13px;
+            }
+            .nav-mini__burger.active span {
+                transform: scale(0);
+            }
+
+
+            .nav-mini__menu {
+                position: fixed;
+                top: -100%;
+                left: 0px;
+                width: 100%;
+                height: 100%;
+                padding: 70px 10px 0px 10px;
+                color: #CEA572;
+                overflow: auto;
+                font-size: 18px;
+                .nav-mini__list {
+                    display: block;
+                    li {
+                        margin: 0px 0px 20px 0px;
+                        list-style: none;
+                        a {color: #fff; text-decoration: none;}
+                    }
+
+                }
+            }
+            .nav-mini__menu.active {
+                top: 0;
+                transition: all 0.3s ease 0s;
+                background: #000;
+            }
         }
-        .nav-mini__first-column {
-            justify-content: right;
-        }
-        .nav-mini__second-column {
-            justify-content: center;
-        }
+    }
+    .nav-mini.scroll {
+        background-color: #000;
     }
 
     .index {
@@ -4093,7 +4756,7 @@
         }
     }
 
-    .learningNav {
+    .learning {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
@@ -4113,97 +4776,94 @@
             width: 400px;
             height: 400px;
         }
-        .learningNavPhotos {
+        a { text-decoration: none; color: #000;}
+        .learning__photo {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            .LearningLinks {
+            .learning__photo_link {
                 position: absolute;
                 font-size: 34px;
                 font-family: 'Palace Of Sports';
                 text-align: center;
                 color: #CEA572;
-                a:link { text-decoration: none; color: #CEA572;}
             }
         }
     }
 
-    ._newsAll {
-        background-color: #312D2E;
-        ._news {
-            display: grid;
-            grid-template-rows: 200px auto 110px;
+    .news {
+        display: grid;
+        grid-template-rows: 200px auto 110px;
+        justify-content: center;
+        font-family: Montserrat;
+        font-size: 14px;
+        color: #fff;
+        .news__text {
+            font-size: 90px;
+            font-family: 'Palace Of Sports';
+            color: #CEA572;
+            grid-row: 1;
+            text-align: center;
+            align-items: center;
+            display: flex;
             justify-content: center;
-            font-family: Montserrat;
-            font-size: 14px;
-            color: #fff;
-            ._newsText {
-                font-size: 90px;
-                font-family: 'Palace Of Sports';
-                color: #CEA572;
-                grid-row: 1;
-                text-align: center;
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-            ._newsTrumbLines {
-                display: grid;
-                grid-template-columns: 470px;
-                grid-column-gap: 20px;
-                grid-template-rows: repeat(2, auto);
-                grid-row-gap: 50px;
-                grid-column-gap: 20px;
-                justify-content: center;
-                width: 80%;
-                margin-left: 10%;
-                ._newsBox {
-                    display: block;
-                    position: relative;
-                    border-bottom: 1px solid #BE9C6C;
-                    padding: 0 0 20px 0;
-                    ._newsDate {
-                        position: absolute;
-                        text-transform: uppercase;
-                        font-family: 'Palace Of Sports';
-                        font-size: 34px;
-                        position: absolute;
-                        top: -25px;
-                        ._newsDateWhite {
-                            color: #fff;
-                        }
-                        ._newsDateYellow {
-                            color: #CEA572;
-                        }
+        }
+        .news-trumb-lines {
+            display: grid;
+            grid-template-columns: 470px;
+            grid-column-gap: 20px;
+            grid-template-rows: repeat(2, auto);
+            grid-row-gap: 50px;
+            grid-column-gap: 20px;
+            justify-content: center;
+            width: 80%;
+            margin-left: 10%;
+            .news-box {
+                display: block;
+                position: relative;
+                border-bottom: 1px solid #BE9C6C;
+                padding: 0 0 20px 0;
+                .news-box__date {
+                    position: absolute;
+                    text-transform: uppercase;
+                    font-family: 'Palace Of Sports';
+                    font-size: 34px;
+                    position: absolute;
+                    top: -25px;
+                    .news-box__date_black {
+                        color: #000;
                     }
-                    ._newsPhoto {
-                        img {
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-                    ._newsText2 {
-                        a {color: #fff; text-decoration: none;}
+                    .news-box__date_yellow {
+                        color: #CEA572;
                     }
                 }
-                
+                .news-box__photo {
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .news-box__text {
+                    a {color: #000; text-decoration: none;}
+                }
             }
-            ._newsLink {
-                grid-row: 3;
-                text-align: right;
-                align-items: center;
-                display: flex;
-                justify-content: right;
-                a {font-size: 28px; font-family: 'Palace Of Sports'; color: #CEA572;}
-            }
+            
+        }
+        .news__bottom-link {
+            grid-row: 3;
+            text-align: right;
+            align-items: center;
+            display: flex;
+            justify-content: right;
+            a {font-size: 28px; font-family: 'Palace Of Sports'; color: #CEA572;}
         }
     }
 
-    .famousGraduates {
+    .famous-graduates {
         display: flex;
         flex-direction: column;
-        grid-row-gap: 20px;
+        grid-row-gap: 50px;
         background-color: #000;
         align-items: center;
         justify-items: center;
@@ -4212,66 +4872,447 @@
             width: 100%;
             height: 100%;
         }
-        .fgText {
+        .famous-graduates__text_1 {
             font-family: "Palace Of Sports";
             color: #fff;
-            font-size: 46px;
+            font-size: 40px;
             text-align: center;
+            max-width: 80%;
         }
-        .graduatesText {
+        .famous-graduates__text_2 {
             color: #CEA572;
             display: flex;
             text-align: center;
-            font-size: 14px;
-            min-width: 80%;
+            font-size: 16px;
+            max-width: 70%;
         }
-        .famousGraduatesPhotos {
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: 30px auto 30px auto auto;
-            justify-content: space-between;
-            grid-column-gap: 5px;
-            grid-row-gap: 10px;
+        .famous-graduates__photos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 100%;
+            justify-items: center;
+            grid-column-gap: 15px;
             color: #E5E5E5;
-            .fg1 {
-                grid-column: 1;
-                grid-row: 1;
-                .fg1_name {text-align: left; font-size: 12px;}
-                .fg1_year {text-align: right; font-size: 12px;}
+            .famous-graduates__photo_1 {
+                margin: 20px 0;
+                .famous-graduates__photo_name-1 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-1 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg2 {
-                grid-column: 2;
-                grid-row: 2;
-                .fg2_name {text-align: left; font-size: 12px;}
-                .fg2_year {text-align: right; font-size: 12px;}
+            .famous-graduates__photo_2 {
+                margin: 20px 0;
+                .famous-graduates__photo_name-2 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-2 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg3 {
-                grid-column: 1;
-                grid-row: 3;
-                .fg3_name {text-align: left; font-size: 12px;}
-                .fg3_year {text-align: right; font-size: 12px;}
+            .famous-graduates__photo_3 {
+                margin: 20px 0;
+                .famous-graduates__photo_name-3 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-3 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg4 {
-                grid-column: 2;
-                grid-row: 4;
-                .fg4_name {text-align: left; font-size: 12px;}
-                .fg4_year {text-align: right; font-size: 12px;}
+            .famous-graduates__photo_4 {
+                margin: 20px 0;
+                .famous-graduates__photo_name-4 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-4 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg5 {
-                grid-column-start: 1;
-                grid-column-end: 3;
-                grid-row: 5;
-                .fg5_name {text-align: left; font-size: 12px;}
-                .fg5_year {text-align: right; font-size: 12px;}
+            .famous-graduates__photo_5 {
+                margin: 20px 0;
+                .famous-graduates__photo_name-5 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-5 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
         }
-        .fgBottom {        
+        .famous-graduates__link {        
             align-items: top;
             margin: 50px 0;
-        
+            font-size: 22px; 
+            font-family: 'Palace Of Sports';
+            a {color: #CEA572; }
         }
-    
+    }
+
+    .bottom {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        display: grid;
+        grid-template-rows: auto auto 50px;
+        justify-content: center;
+        .bottom-logos {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            img {
+                width: 162px;
+                height: 48px;
+            }
+        }
+        .bottom-text {
+            grid-row: 2;
+            padding-bottom: 20px;
+            margin-bottom: 50px;
+            width: 80%;
+            height: auto;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            flex-direction: column;
+            margin: 0 auto;
+            border: 1px solid #58595B;
+            box-sizing: border-box;
+            .bottom-text_gold {
+                color: #CEA572; 
+                text-align: center; 
+                font-family: 'Palace Of Sports';
+                font-size: 22px;
+                line-height: 22px;
+                text-transform: uppercase;
+            }
+            .bottom-text_bold {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 16px;
+                line-height: 155.9%;
+                width: 80%;
+                text-align: center;
+                position: relative;
+                left: 10%;
+            }
+            .bottom-text_info {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 155.9%;
+                width: 70%;
+                text-align: center;
+                position: relative;
+                left: 15%;
+            }
+            .bottom-text_gold-2 {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 155.9%;
+                color: #CEA572;
+            }
+            a {color: #CEA572;}
+            .bottom-text_bottom {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 155.9%;
+                width: 70%;
+                text-align: center;
+                position: relative;
+                left: 15%;
+            }
+        } 
+    }
+
+    footer {
+        position: static;
+        padding-top: 10px;
+        padding-bottom: 30px;
+
+        display: grid;
+        grid-template-columns: 110px 50px 180px;
+        grid-column-gap: 2px;
+        grid-template-rows: repeat(16, auto);
+        
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 155.9%;
+        color: #E5E5E5;
+        background-color: #231F20;
+        align-items: left;
+        align-content: center;
+        justify-items: left;
+        justify-content: center;
+        .footer__address {
+            grid-column: 1;
+            grid-row: 1;
+            color: #CEA572;
+            text-align: left;
+        }
+        .footer__address_2 {
+            grid-column-start: 2;
+            grid-column-end: 4;
+            grid-row: 1;
+            text-align: left;
+        }
+        .footer__phone {
+            grid-column: 1;
+            grid-row: 2;
+            text-align: left;
+            color: #CEA572;
+        }
+        .footer__phone_2 {
+            grid-column-start: 2;
+            grid-column-end: 4;
+            grid-row: 2;
+            text-align: left;
+        }
+        .footer__fax {
+            grid-column: 1;
+            grid-row: 3;
+            color: #CEA572;
+            text-align: left;
+        }
+        .footer__fax_2 {
+            grid-column-start: 2;
+            grid-column-end: 4;
+            grid-row: 3;
+            text-align: left;
+        }
+        .footer__mail {
+            grid-column: 1;
+            grid-row: 4;
+            color: #CEA572;
+            text-align: left;
+        }
+        .footer__mail_2 {
+            grid-column-start: 2;
+            grid-column-end: 4;
+            grid-row: 4;
+            text-align: left;
+            a {color: #fff;}
+        }
+        .footer__grap {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row: 5;
+            color: #CEA572;
+            text-align: left;
+        }
+        .footer__grap_2 {
+            grid-column: 3;
+            grid-row: 5;
+            text-align: left;
+        }
+        .footer__output {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row: 6;
+            color: #CEA572;
+            text-align: left;
+        }
+        .footer__output_2 {
+            grid-column: 3;
+            grid-row: 6;
+            text-align: left;
+        }
+        .footer__press {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 7;
+            text-align: center;
+            justify-self: center;
+            a {color: #CEA572;}
+        }
+        .footer__logo_photo {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 8;
+            text-align: center;
+            justify-self: center;
+            img {
+                width: 47px;
+                height: 46px;
+            }
+        }
+        .footer__logo_text-1 {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 9;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+        }
+        .footer__logo_text-2 {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 10;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+        }
+        .footer__logo_text-3 {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 11;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+        }
+        .footer__min-kult {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 12;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+            a { color: #CEA572;}
+        }
+        .footer__offsite {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 13;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+            a { color: #CEA572;}
+        }
+        .footer__bus-gov {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 14;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+            a { color: #CEA572;}
+        }
+        .footer__mark {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 15;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+            a { color: #CEA572;}
+        }
+        .footer__rus-center {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 16;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+            a {color: #5F6164;}
+        }
+        
     }
 
     .facultiesLogo {
@@ -4499,6 +5540,9 @@
         margin: 0;
         font-family: Montserrat;
     }
+    body.lock {
+        overflow: hidden;
+    }
     h2 {
         font-size: 55px;
     }
@@ -4507,34 +5551,128 @@
         display: none;
     }
     .nav-mini {
-        display: grid;
-        grid-template-columns: repeat(3, 33.3333%);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         margin: 0 auto;
         width: 100%;
         position: fixed;
         top: 0px;
         left: 0px;
-        min-height: 100px;
+        height: 60px;
+
+        color: #CEA572;
+
         z-index: 100;
         opacity: 0.9;
         filter: alpha(Opacity=90);
-        color: #CEA572;
         font-family: Montserrat;
         font-style: normal;
         font-weight: normal;
         font-size: 11px;
-        .nav-mini__logo-column {
-            img {height: 70px; width: auto;}
-        }
-        .nav-mini__first-column {
-            justify-content: right;
-        }
-        .nav-mini__second-column {
-            justify-content: center;
+        .nav-mini__body {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            height: 60px;
+            align-items: center;
+            width: 100%;
+            .nav-mini__logo {
+                padding-top: 5px;
+                padding-left: 20px;
+                z-index: 3;
+                img {height: 50px; width: auto;}
+            }
+            .nav-mini__phone {
+                justify-content: right;
+                display: flex;
+                align-items: center;
+                font-size: 16px;
+                line-height: 20px;
+                text-decoration: underline;
+                z-index: 3;
+            }
+
+
+            .nav-mini__burger {
+                display: block;
+                position: relative;
+                width: 30px;
+                height: 30px;
+                z-index: 3;
+                margin-right: 20px;
+                span {
+                    position: absolute;
+                    height: 3px;
+                    background-color: #CEA572;
+                    left: 0px;
+                    width: 100%;
+                    top: 13px;
+                }
+            }
+            .nav-mini__burger::before {
+                content: '';
+                top: 0;
+                position: absolute;
+                height: 3px;
+                background-color: #cea572;
+                width: 100%;
+                transition: all 0.3s ease 0s;
+            }
+            .nav-mini__burger::after {
+                content: '';
+                bottom: 1px;
+                position: absolute;
+                height: 3px;
+                background-color: #cea572;
+                width: 100%;
+                transition: all 0.3s ease 0s;
+            }
+            .nav-mini__burger.active::before {
+                transform: rotate(45deg);
+                top: 14px;
+            }
+            .nav-mini__burger.active::after {
+                transform: rotate(-45deg);
+                bottom: 13px;
+            }
+            .nav-mini__burger.active span {
+                transform: scale(0);
+            }
+
+
+            .nav-mini__menu {
+                position: fixed;
+                top: -100%;
+                left: 0px;
+                width: 100%;
+                height: 100%;
+                padding: 70px 10px 0px 10px;
+                color: #CEA572;
+                overflow: auto;
+                font-size: 18px;
+                .nav-mini__list {
+                    display: block;
+                    li {
+                        margin: 0px 0px 20px 0px;
+                        list-style: none;
+                        a {color: #fff; text-decoration: none;}
+                    }
+
+                }
+            }
+            .nav-mini__menu.active {
+                top: 0;
+                transition: all 0.3s ease 0s;
+                background: #000;
+            }
         }
     }
+    .nav-mini.scroll {
+        background-color: #000;
+    }
 
-    .learningNav {
+    .learning {
         display: flex;
         flex-flow: row wrap;
         justify-content: center;
@@ -4554,18 +5692,18 @@
             width: 300px;
             height: 300px;
         }
-        .learningNavPhotos {
+        a { text-decoration: none; color: #000; }
+        .learning__photo {
             position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            .LearningLinks {
+            .learning__photo_link {
                 position: absolute;
                 font-size: 30px;
                 font-family: 'Palace Of Sports';
                 text-align: center;
                 color: #CEA572;
-                a:link { text-decoration: none; color: #CEA572;}
             }
         }
     }
@@ -4699,81 +5837,78 @@
         }
     }
 
-    ._newsAll {
-        background-color: #312D2E;
-        ._news {
-            display: grid;
-            grid-template-rows: 200px auto 110px;
+    .news {
+        display: grid;
+        grid-template-rows: 200px auto 110px;
+        justify-content: center;
+        font-family: Montserrat;
+        font-size: 14px;
+        color: #fff;
+        .news__text {
+            font-size: 60px;
+            font-family: 'Palace Of Sports';
+            color: #CEA572;
+            grid-row: 1;
+            text-align: center;
+            align-items: center;
+            display: flex;
             justify-content: center;
-            font-family: Montserrat;
-            font-size: 14px;
-            color: #fff;
-            ._newsText {
-                font-size: 90px;
-                font-family: 'Palace Of Sports';
-                color: #CEA572;
-                grid-row: 1;
-                text-align: center;
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-            ._newsTrumbLines {
-                display: grid;
-                grid-template-columns: 300px;
-                grid-column-gap: 20px;
-                grid-template-rows: repeat(2, auto);
-                grid-row-gap: 40px;
-                grid-column-gap: 20px;
-                justify-content: center;
-                width: 80%;
-                margin-left: 10%;
-                ._newsBox {
-                    display: block;
-                    position: relative;
-                    border-bottom: 1px solid #BE9C6C;
-                    padding: 0 0 20px 0;
-                    ._newsDate {
-                        position: absolute;
-                        text-transform: uppercase;
-                        font-family: 'Palace Of Sports';
-                        font-size: 34px;
-                        position: absolute;
-                        top: -25px;
-                        ._newsDateWhite {
-                            color: #fff;
-                        }
-                        ._newsDateYellow {
-                            color: #CEA572;
-                        }
+        }
+        .news-trumb-lines {
+            display: grid;
+            grid-template-columns: 300px;
+            grid-column-gap: 20px;
+            grid-template-rows: repeat(2, auto);
+            grid-row-gap: 40px;
+            grid-column-gap: 20px;
+            justify-content: center;
+            width: 80%;
+            margin-left: 10%;
+            .news-box {
+                display: block;
+                position: relative;
+                border-bottom: 1px solid #BE9C6C;
+                padding: 0 0 20px 0;
+                .news-box__date {
+                    position: absolute;
+                    text-transform: uppercase;
+                    font-family: 'Palace Of Sports';
+                    font-size: 34px;
+                    position: absolute;
+                    top: -25px;
+                    .news-box__date_black {
+                        color: #000;
                     }
-                    ._newsPhoto {
-                        img {
-                            width: 100%;
-                            height: 100%;
-                        }
-                    }
-                    ._newsText2 {
-                        a {color: #fff; text-decoration: none;}
+                    .news-box__date_yellow {
+                        color: #CEA572;
                     }
                 }
-                
+                .news-box__photo {
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .news-box__text {
+                    a {color: #000; text-decoration: none;}
+                }
             }
-            ._newsLink {
-                grid-row: 3;
-                text-align: center;
-                align-items: center;
-                display: flex;
-                justify-content: center;
-                a {font-size: 28px; font-family: 'Palace Of Sports'; color: #CEA572;}
-            }
+            
+        }
+        .news__bottom-link {
+            grid-row: 3;
+            text-align: center;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            a {font-size: 28px; font-family: 'Palace Of Sports'; color: #CEA572;}
         }
     }
 
-    .famousGraduates {
+    .famous-graduates {
         display: flex;
         flex-direction: column;
-        grid-row-gap: 20px;
+        grid-row-gap: 50px;
         background-color: #000;
         align-items: center;
         justify-items: center;
@@ -4782,68 +5917,446 @@
             width: 100%;
             height: 100%;
         }
-        .fgText {
+        .famous-graduates__text_1 {
             font-family: "Palace Of Sports";
             color: #fff;
-            font-size: 46px;
+            font-size: 25px;
+            line-height: 134.5%;
             text-align: center;
+            max-width: 80%;
         }
-        .graduatesText {
+        .famous-graduates__text_2 {
             color: #CEA572;
             display: flex;
             text-align: center;
             font-size: 14px;
-            min-width: 80%;
+            line-height: 171.9%;
+            max-width: 90%;
         }
-        .famousGraduatesPhotos {
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: 30px auto 30px auto auto;
-            justify-content: space-between;
-            grid-column-gap: 5px;
-            grid-row-gap: 10px;
+        .famous-graduates__photos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 100%;
+            justify-items: center;
+            grid-column-gap: 15px;
             color: #E5E5E5;
-            .fg1 {
-                grid-column: 1;
-                grid-row: 1;
-                .fg1_name {text-align: left; font-size: 12px;}
-                .fg1_year {text-align: right; font-size: 12px;}
+            .famous-graduates__photo_1 {
+                margin: 20px 0;
+                .famous-graduates__photo_name-1 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-1 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg2 {
-                grid-column: 2;
-                grid-row: 2;
-                .fg2_name {text-align: left; font-size: 12px;}
-                .fg2_year {text-align: right; font-size: 12px;}
+            .famous-graduates__photo_2 {
+                margin: 20px 0;
+                .famous-graduates__photo_name-2 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-2 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg3 {
-                grid-column: 1;
-                grid-row: 3;
-                .fg3_name {text-align: left; font-size: 12px;}
-                .fg3_year {text-align: right; font-size: 12px;}
+            .famous-graduates__photo_3 {
+                margin: 20px 0;
+                .famous-graduates__photo_name-3 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-3 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg4 {
-                grid-column: 2;
-                grid-row: 4;
-                .fg4_name {text-align: left; font-size: 12px;}
-                .fg4_year {text-align: right; font-size: 12px;}
+            .famous-graduates__photo_4 {
+                margin: 20px 0;
+                .famous-graduates__photo_name-4 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-4 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
-            .fg5 {
-                grid-column-start: 1;
-                grid-column-end: 3;
-                grid-row: 5;
-                width: 50%;
-                height: 50%;
-                .fg5_name {text-align: left; font-size: 12px;}
-                .fg5_year {text-align: right; font-size: 12px;}
+            .famous-graduates__photo_5 {
+                margin: 20px 0;
+                .famous-graduates__photo_name-5 {
+                    text-align: left; 
+                    grid-row: 2;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 0;
+                }
+                .famous-graduates__photo_year-5 {
+                    text-align: right;
+                    font-family: Montserrat;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 155.9%;
+                    color: #E5E5E5;
+                    width: 50%;
+                    position: relative;
+                    left: 50%;
+                }
             }
         }
-        .fgBottom {        
+        .famous-graduates__link {        
             align-items: top;
             margin: 50px 0;
-        
+            font-size: 22px; 
+            font-family: 'Palace Of Sports';
+            a {color: #CEA572; }
         }
-    
+    }
+
+    .bottom {
+        display: grid;
+        align-items: center;
+        justify-items: center;
+        display: grid;
+        grid-template-rows: auto auto 50px;
+        justify-content: center;
+        .bottom-logos {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+            img {
+                width: 162px;
+                height: 48px;
+            }
+        }
+        .bottom-text {
+            grid-row: 2;
+            padding-bottom: 20px;
+            margin-bottom: 50px;
+            width: 90%;
+            height: auto;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            flex-direction: column;
+            margin: 0 auto;
+            border: 1px solid #58595B;
+            box-sizing: border-box;
+            .bottom-text_gold {
+                color: #CEA572; 
+                text-align: center; 
+                font-family: 'Palace Of Sports';
+                font-size: 22px;
+                line-height: 22px;
+                text-transform: uppercase;
+            }
+            .bottom-text_bold {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: bold;
+                font-size: 14px;
+                line-height: 155.9%;
+                width: 80%;
+                position: relative;
+                left: 10%;
+            }
+            .bottom-text_info {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 14px;
+                line-height: 155.9%;
+                width: 80%;
+                position: relative;
+                left: 10%;
+            }
+            .bottom-text_gold-2 {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 155.9%;
+                color: #CEA572;
+            }
+            a {color: #CEA572;}
+            .bottom-text_bottom {
+                font-family: Montserrat;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 12px;
+                line-height: 155.9%;
+                width: 70%;
+                text-align: center;
+                position: relative;
+                left: 15%;
+            }
+        } 
+    }
+
+    footer {
+        position: static;
+        padding-top: 10px;
+        padding-bottom: 30px;
+
+        display: grid;
+        grid-template-columns: 90px 20px 160px;
+        grid-template-rows: repeat(16, auto);
+        
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 155.9%;
+        color: #E5E5E5;
+        background-color: #231F20;
+        align-items: left;
+        align-content: center;
+        justify-items: left;
+        justify-content: center;
+        .footer__address {
+            grid-column: 1;
+            grid-row: 1;
+            color: #CEA572;
+            text-align: left;
+        }
+        .footer__address_2 {
+            grid-column-start: 2;
+            grid-column-end: 4;
+            grid-row: 1;
+            text-align: left;
+        }
+        .footer__phone {
+            grid-column: 1;
+            grid-row: 2;
+            text-align: left;
+            color: #CEA572;
+        }
+        .footer__phone_2 {
+            grid-column-start: 2;
+            grid-column-end: 4;
+            grid-row: 2;
+            text-align: left;
+        }
+        .footer__fax {
+            grid-column: 1;
+            grid-row: 3;
+            color: #CEA572;
+            text-align: left;
+        }
+        .footer__fax_2 {
+            grid-column-start: 2;
+            grid-column-end: 4;
+            grid-row: 3;
+            text-align: left;
+        }
+        .footer__mail {
+            grid-column: 1;
+            grid-row: 4;
+            color: #CEA572;
+            text-align: left;
+        }
+        .footer__mail_2 {
+            grid-column-start: 2;
+            grid-column-end: 4;
+            grid-row: 4;
+            text-align: left;
+            a {color: #fff;}
+        }
+        .footer__grap {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row: 5;
+            color: #CEA572;
+            text-align: left;
+        }
+        .footer__grap_2 {
+            grid-column: 3;
+            grid-row: 5;
+            text-align: left;
+        }
+        .footer__output {
+            grid-column-start: 1;
+            grid-column-end: 2;
+            grid-row: 6;
+            color: #CEA572;
+            text-align: left;
+        }
+        .footer__output_2 {
+            grid-column: 3;
+            grid-row: 6;
+            text-align: left;
+        }
+        .footer__press {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 7;
+            text-align: center;
+            justify-self: center;
+            a {color: #CEA572;}
+        }
+        .footer__logo_photo {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 8;
+            text-align: center;
+            justify-self: center;
+            img {
+                width: 47px;
+                height: 46px;
+            }
+        }
+        .footer__logo_text-1 {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 9;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+        }
+        .footer__logo_text-2 {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 10;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+        }
+        .footer__logo_text-3 {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 11;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+        }
+        .footer__min-kult {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 12;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+            a { color: #CEA572;}
+        }
+        .footer__offsite {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 13;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+            a { color: #CEA572;}
+        }
+        .footer__bus-gov {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 14;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+            a { color: #CEA572;}
+        }
+        .footer__mark {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 15;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+            a { color: #CEA572;}
+        }
+        .footer__rus-center {
+            grid-column-start: 1;
+            grid-column-end: 4;
+            grid-row: 16;
+            font-size: 12px;
+            text-align: center;
+            justify-self: center;
+            a {color: #5F6164;}
+        }
+        
     }
 
     .facultiesLogo {
