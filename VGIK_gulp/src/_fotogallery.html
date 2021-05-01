@@ -1,3 +1,65 @@
 <div class="fotogallery">
     <h2>ФОТОГАЛЛЕРЕЯ</h2>
-</div>
+    <!-- Swiper -->
+    <div class="fotogallery__swiper">
+        <div class="swiper-container gallery-top">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="./img/gallery-example_1.jpg"></div>
+              <div class="swiper-slide"><img src="./img/gallery-example_2.jpg"></div>
+              <div class="swiper-slide" style="background-image:url(./img/gallery-example_3.jpg)"></div>
+              <div class="swiper-slide" style="background-image:url(./img/gallery-example_4.jpg)"></div>
+              <div class="swiper-slide" style="background-image:url(./img/gallery-example_5.jpg)"></div>
+              <div class="swiper-slide" style="background-image:url(./img/gallery-example_6.jpg)"></div>
+              <div class="swiper-slide" style="background-image:url(./img/gallery-example_7.jpg)"></div>
+              <div class="swiper-slide" style="background-image:url(./img/gallery-example_8.jpg)"></div>
+              <div class="swiper-slide" style="background-image:url(./img/gallery-example_9.jpg)"></div>
+              <div class="swiper-slide" style="background-image:url(./img/gallery-example_10.jpg)"></div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next swiper-button-white"></div>
+            <div class="swiper-button-prev swiper-button-white"></div>
+          </div>
+          <div class="swiper-container gallery-thumbs">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" style="background-image:url(./img/gallery-example_1.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./img/gallery-example_2.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./img/gallery-example_3.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./img/gallery-example_4.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./img/gallery-example_5.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./img/gallery-example_6.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./img/gallery-example_7.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./img/gallery-example_8.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./img/gallery-example_9.jpg)"></div>
+                <div class="swiper-slide" style="background-image:url(./img/gallery-example_10.jpg)"></div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+<script src="./js/script.js"></script>
+
+<script>
+var galleryThumbs = new Swiper('.gallery-thumbs', {
+    spaceBetween: 10,
+    slidesPerView: 4,
+    loop: true,
+    freeMode: true,
+    loopedSlides: 5, //looped slides should be the same
+    watchSlidesVisibility: true,
+    watchSlidesProgress: true,
+});
+
+var galleryTop = new Swiper('.gallery-top', {
+    spaceBetween: 10,
+    loop: true,
+    loopedSlides: 5, //looped slides should be the same
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    thumbs: {
+      swiper: galleryThumbs,
+    }
+});
+</script>
