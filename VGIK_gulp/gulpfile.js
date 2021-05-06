@@ -10,14 +10,16 @@ let path={
         css: project_folder + "/css/",
         js: project_folder + "/js/",
         img: project_folder + "/img/",
-        fonts: project_folder + "/fonts/"
+        fonts: project_folder + "/fonts/",
+        video: project_folder + "/video/"
     },
     src: {
         html: [source_folder+"/*.html", "!" + source_folder + "/_*.html"],
         css: source_folder + "/scss/style.scss",
         js: source_folder + "/js/script.js",
         img: source_folder + "/img/**/*.{jpg,png,ico}",
-        fonts: source_folder + "/fonts/*.{ttf,eot,svg,woff,woff2}"
+        fonts: source_folder + "/fonts/*.{ttf,eot,svg,woff,woff2}",
+        video: source_folder + "/video/*.{mp4,webm}"
     },
     watch: {
         html: source_folder+"/**/*.html",
@@ -25,6 +27,7 @@ let path={
         js: source_folder + "/js/**/*.js",
         img: source_folder + "/img/**/*.{jpg,png,ico}",
         fonts: source_folder + "/fonts/*.{ttf,eot,svg,woff,woff2}",
+        video: source_folder + "/video/*.{mp4,webm}"
     },
     clean: "./" + project_folder + "/"
 }
@@ -42,7 +45,7 @@ let {src, dest} = require('gulp'),
     webp = require("gulp-webp"),
     webphtml = require("gulp-webp-html");
 
-function browserSync(params) {
+function browserSync() {
     browsersync.init({
        server: {
            baseDir: "./" + project_folder + "/",
@@ -59,7 +62,7 @@ function html() {
         .pipe(browsersync.stream())
 }
 
-function css(params) {
+function css() {
     return src(path.src.css)
         .pipe(
             scss({
@@ -131,14 +134,19 @@ function js() {
         .pipe(browsersync.stream())
 }
 
-
+function video () {
+    return src(path.src.video)
+        .pipe(fileinclude())
+        .pipe(dest(path.build.video))
+}
 
 
 function watchFiles (params) {
     gulp.watch([path.watch.html], html),
     gulp.watch([path.watch.css], css),
     gulp.watch([path.watch.js], js),
-    gulp.watch([path.watch.img], images)
+    gulp.watch([path.watch.img], images),
+    gulp.watch([path.watch.video], video)
 }
 
 
@@ -146,10 +154,10 @@ function clean (params) {
     return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(js, css, html, images, fonts));
+let build = gulp.series(clean, gulp.parallel(js, css, html, images, fonts, video));
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
-
+exports.video = video;
 exports.fonts = fonts;
 exports.images = images;
 exports.js = js;

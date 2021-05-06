@@ -29,7 +29,8 @@ $(document).ready(function () {
     });
 });
 
-var galleryThumbs = new Swiper('.gallery-thumbs', {
+
+/* var galleryThumbs = new Swiper('.gallery-thumbs', {
     spaceBetween: 10,
     slidesPerView: 4,
     loop: true,
@@ -50,4 +51,4 @@ var galleryTop = new Swiper('.gallery-top', {
     thumbs: {
       swiper: galleryThumbs,
     }
-});
+}); */
