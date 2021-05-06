@@ -1,65 +1,280 @@
-<div class="fotogallery">
-    <h2>ФОТОГАЛЛЕРЕЯ</h2>
-    <!-- Swiper -->
-    <div class="fotogallery__swiper">
-        <div class="swiper-container gallery-top">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide"><img src="./img/gallery-example_1.jpg"></div>
-              <div class="swiper-slide"><img src="./img/gallery-example_2.jpg"></div>
-              <div class="swiper-slide" style="background-image:url(./img/gallery-example_3.jpg)"></div>
-              <div class="swiper-slide" style="background-image:url(./img/gallery-example_4.jpg)"></div>
-              <div class="swiper-slide" style="background-image:url(./img/gallery-example_5.jpg)"></div>
-              <div class="swiper-slide" style="background-image:url(./img/gallery-example_6.jpg)"></div>
-              <div class="swiper-slide" style="background-image:url(./img/gallery-example_7.jpg)"></div>
-              <div class="swiper-slide" style="background-image:url(./img/gallery-example_8.jpg)"></div>
-              <div class="swiper-slide" style="background-image:url(./img/gallery-example_9.jpg)"></div>
-              <div class="swiper-slide" style="background-image:url(./img/gallery-example_10.jpg)"></div>
-            </div>
-            <!-- Add Arrows -->
-            <div class="swiper-button-next swiper-button-white"></div>
-            <div class="swiper-button-prev swiper-button-white"></div>
-          </div>
-          <div class="swiper-container gallery-thumbs">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image:url(./img/gallery-example_1.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(./img/gallery-example_2.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(./img/gallery-example_3.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(./img/gallery-example_4.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(./img/gallery-example_5.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(./img/gallery-example_6.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(./img/gallery-example_7.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(./img/gallery-example_8.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(./img/gallery-example_9.jpg)"></div>
-                <div class="swiper-slide" style="background-image:url(./img/gallery-example_10.jpg)"></div>
-            </div>
-          </div>
-        </div>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
 
-
-<script src="./js/script.js"></script>
-
-<script>
-var galleryThumbs = new Swiper('.gallery-thumbs', {
-    spaceBetween: 10,
-    slidesPerView: 4,
-    loop: true,
-    freeMode: true,
-    loopedSlides: 5, //looped slides should be the same
-    watchSlidesVisibility: true,
-    watchSlidesProgress: true,
-});
-
-var galleryTop = new Swiper('.gallery-top', {
-    spaceBetween: 10,
-    loop: true,
-    loopedSlides: 5, //looped slides should be the same
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    thumbs: {
-      swiper: galleryThumbs,
+<head>
+  <style>
+    @media (min-width: 1601px) {
+      html, body {
+        position: relative;
+        height: 100%;
+      }
+      body {
+        background: #fff;
+        font-family: Montserrat;
+        font-size: 16px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+      .swiper-container {
+        width: 100%;
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .swiper-slide {
+        background-size: cover;
+        background-position: center;
+      }
+      .gallery-top {
+        height: 100%;
+        width: 100%;
+      }
+      .gallery-thumbs {
+        height: 11%;
+        width: 70%;
+        box-sizing: border-box;
+        padding: 10px 0;
+        border-top: 4px solid #CEA572;
+      }
+      .gallery-thumbs .swiper-slide {
+        width: 10%;
+        height: 100%;
+        opacity: 0.4;
+      }
+      .gallery-thumbs .swiper-slide-thumb-active {
+        opacity: 1;
+      }
+      .swiper-button-next.swiper-button-white, .swiper-button-prev.swiper-button-white {
+        --swiper-navigation-color:#CEA572;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 5%;
+        top: 22px;
+      }
+      .swiper-button-next.swiper-button-white {
+        position: absolute;
+        right: 0;
+      }
+      .swiper-button-prev.swiper-button-white {
+        position: absolute;
+        left: 0;
+      }
+      .fotogallery__main-text {
+        font-family: 'Palace Of Sports';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 45px;
+        line-height: 61px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #000000;
+        padding: 30px 0;
+      }
+      .fotogallery__photo-text {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+      }
     }
-});
-</script>
+    @media (max-width: 1601px) {
+      html, body {
+        position: relative;
+        height: 100%;
+      }
+      body {
+        background: #fff;
+        font-family: Montserrat;
+        font-size: 16px;
+        color: #000;
+        margin: 0;
+        padding: 0;
+      }
+      .swiper-container {
+        width: 100%;
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .swiper-slide {
+        background-size: cover;
+        background-position: center;
+      }
+      .gallery-top {
+        height: 100%;
+        width: 100%;
+      }
+      .gallery-thumbs {
+        height: 15%;
+        width: 70%;
+        box-sizing: border-box;
+        padding: 10px 0;
+        border-top: 4px solid #CEA572;
+      }
+      .gallery-thumbs .swiper-slide {
+        width: 10%;
+        height: 100%;
+        opacity: 0.4;
+      }
+      .gallery-thumbs .swiper-slide-thumb-active {
+        opacity: 1;
+      }
+      .swiper-button-next.swiper-button-white, .swiper-button-prev.swiper-button-white {
+        --swiper-navigation-color:#CEA572;
+        background-color: rgba(0, 0, 0, 0.5);
+        height: 100%;
+        width: 5%;
+        top: 22px;
+      }
+      .swiper-button-next.swiper-button-white {
+        position: absolute;
+        right: 0;
+      }
+      .swiper-button-prev.swiper-button-white {
+        position: absolute;
+        left: 0;
+      }
+      .fotogallery__main-text {
+        font-family: 'Palace Of Sports';
+        font-style: normal;
+        font-weight: normal;
+        font-size: 45px;
+        line-height: 61px;
+        text-align: center;
+        text-transform: uppercase;
+        color: #000000;
+        padding: 30px 0;
+      }
+      .fotogallery__photo-text {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+      }
+    }
+    @media (max-width: 1366px) {
+      .gallery-thumbs {
+        height: 11%;
+        border-top: 3px solid #CEA572;
+      }
+    }
+    @media (max-width: 1024px) {
+      .gallery-thumbs {
+        height: 15%;
+        border-top: 2px solid #CEA572;
+      }
+    }
+    @media (max-width: 768px) {
+      .gallery-top {
+        height: 300px;
+      }
+      .swiper-button-next.swiper-button-white, .swiper-button-prev.swiper-button-white {
+        width: 8%;
+        top: 16px;
+      }
+      .fotogallery__photo-text {
+        padding: 10px 0;
+      }
+      :root {
+        --swiper-navigation-size:32px;
+      }
+      .fotogallery__photo-text {
+        width: 80%;
+        margin-left: 10%;
+        font-size: 14px;
+      }
+    }
+    @media (max-width: 480px) {
+      .gallery-top {
+        height: 200px;
+      }
+      .swiper-button-next.swiper-button-white, .swiper-button-prev.swiper-button-white {
+        width: 10%;
+        top: 12px;
+      }
+      .gallery-thumbs {
+        display: none;
+      }
+      .fotogallery__main-text {
+        font-size: 32px;
+        padding: 20px 0;
+      }
+      :root {
+        --swiper-navigation-size:24px;
+      }
+      .fotogallery__photo-text {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="fotogallery__main-text">Фотогалерея</div>
+
+  <!-- Swiper -->
+  <div class="swiper-container gallery-top">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_1.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_2.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_3.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_4.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_5.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_6.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_7.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_8.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_9.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_10.jpg)"></div>
+    </div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next swiper-button-white"></div>
+    <div class="swiper-button-prev swiper-button-white"></div>
+  </div>
+
+  <div class="fotogallery__photo-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, neque quae. Maxime?</div>
+
+  <div class="swiper-container gallery-thumbs">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_1.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_2.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_3.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_4.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_5.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_6.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_7.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_8.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_9.jpg)"></div>
+      <div class="swiper-slide" style="background-image:url(img/gallery-example_10.jpg)"></div>
+    </div>
+  </div>
+
+
+  <!-- Swiper JS -->
+  <script src="../package/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var galleryThumbs = new Swiper('.gallery-thumbs', {
+      spaceBetween: 10,
+      slidesPerView: 10,
+      freeMode: true,
+      watchSlidesVisibility: true,
+      watchSlidesProgress: true,
+    });
+    var galleryTop = new Swiper('.gallery-top', {
+      spaceBetween: 10,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      thumbs: {
+        swiper: galleryThumbs
+      }
+    });
+  </script>
+</body>
+
+</html>
